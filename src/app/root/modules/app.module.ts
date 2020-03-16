@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../component/app.component';
 import { MainNavBarModule } from 'src/app/main-nav-bar/module/main-nav-bar.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { MainNavBarModule } from 'src/app/main-nav-bar/module/main-nav-bar.modul
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MainNavBarModule
+    MainNavBarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

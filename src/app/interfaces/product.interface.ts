@@ -5,7 +5,7 @@ export interface Category {
     'price': number;
     'img': {
         'url': string,
-        'name': string, // change to Date with MM/YY format
+        'name': string,
         'imgId': string
     };
 }
