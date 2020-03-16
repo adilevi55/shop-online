@@ -8,6 +8,7 @@ import { ShearModule } from 'src/app/root/modules/shear.module';
   declarations: [LoginComponent],
   imports: [
     ShearModule
-  ]
+  ],
+  exports: [ LoginComponent]
 })
 export class LoginModule { }
