@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LoginComponent } from '../component/login.component';
+import { ShearModule } from 'src/app/root/modules/shear.module';
 
 
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
-    CommonModule
+    ShearModule
   ]
 })
 export class LoginModule { }
