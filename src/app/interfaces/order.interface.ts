@@ -11,4 +11,5 @@ export interface Order {
         'expirationDate': string, // change to Date with MM/YY format
         'cvv': string
     };
+    'purchaseDate': Date;
 }

@@ -1,1 +1,103 @@
-<p>register works!</p>
+<form #formInfo="ngForm">
+    
+    <mat-form-field 
+      appearance="outline">
+    <mat-label>Email</mat-label>
+        <input matInput  required 
+        #emailInfo="ngModel" [(ngModel)]="user.email" name="email" 
+        type="text"  placeholder="Email">
+    
+      <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
+        Email Missing</mat-error>
+      </mat-form-field>
+
+        <mat-form-field 
+      appearance="outline">
+    <mat-label>Password</mat-label>
+        <input matInput  required 
+        #passwordInfo="ngModel" [(ngModel)]="user.password" name="password" 
+        type="password"  placeholder="Password">
+    
+      <mat-error *ngIf="passwordInfo.errors?.required && passwordInfo.touched">
+        Password Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Password Confirm</mat-label>
+        <input matInput  required 
+        #passwordConfirmInfo="ngModel" [(ngModel)]="passwordConfirm" name="passwordConfirm" 
+        type="password"  placeholder="Password Confirm" >
+    
+      <mat-error *ngIf="passwordConfirmInfo.errors?.required && passwordConfirmInfo.touched">
+        Password Confirm Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>First Name</mat-label>
+        <input matInput  required 
+        #firstNameInfo="ngModel" [(ngModel)]="user.firstName" name="firstName" 
+        type="text"  placeholder="First Name">
+    
+      <mat-error *ngIf="firstNameInfo.errors?.required && firstNameInfo.touched">
+        First Name Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Last Name</mat-label>
+        <input matInput  required 
+        #lastNameInfo="ngModel" [(ngModel)]="user.lastName" name="lastName" 
+        type="text"  placeholder="Last Name">
+    
+      <mat-error *ngIf="lastNameInfo.errors?.required && lastNameInfo.touched">
+        Last Name Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Phone Number</mat-label>
+        <input matInput  required 
+        #phoneInfo="ngModel" [(ngModel)]="user.phone" name="phone" 
+        type="text"  placeholder="Phone Number">
+    
+      <mat-error *ngIf="phoneInfo.errors?.required && phoneInfo.touched">
+        Phone Number Missing</mat-error>
+      </mat-form-field>
+   
+      city
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Street</mat-label>
+        <input matInput  required 
+        #streetInfo="ngModel" [(ngModel)]="user.street" name="street" 
+        type="text"  placeholder="Street">
+    
+      <mat-error *ngIf="streetInfo.errors?.required && streetInfo.touched">
+        Street Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Hous Number</mat-label>
+        <input matInput  required 
+        #housNumberInfo="ngModel" [(ngModel)]="user.housNumber" name="housNumber" 
+        type="text"  placeholder="Street">
+    
+      <mat-error *ngIf="housNumberInfo.errors?.required && housNumberInfo.touched">
+        Hous Number Missing</mat-error>
+      </mat-form-field>
+
+    <button mat-raised-button
+    [disabled]="formInfo.form.invalid" 
+    (click)="register()">
+      Register
+    </button>
+</form>
+
+<a 
+routerLink="/home">
+    Login
+</a>

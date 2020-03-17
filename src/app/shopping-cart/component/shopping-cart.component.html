@@ -1,1 +1,12 @@
-<p>shopping-cart works!</p>
+<button 
+(click)="deleteAllCartItems()"
+[disabled]="shoppingCartItems.length > 0"
+>delete all</button>
+<div *ngFor="let i of shoppingCartItems">
+    <p>{{i.shoppingCart}}</p>
+    <p>{{i.generalPrice}}</p>
+    <p>{{i.quantity}}</p>
+    <p>{{i.product.name}}</p>
+    <button mat-raised-button (click)="deleteCartItem(i._id)"> delete</button>
+</div>
+{{shoppingCartItems}}

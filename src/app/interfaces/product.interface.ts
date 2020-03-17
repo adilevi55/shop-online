@@ -1,7 +1,10 @@
-export interface Category {
+export interface Product {
     '_id': string;
     'name': string;
-    'category': string;
+    'category': {
+        '_id': string,
+        'name': string
+    };
     'price': number;
     'img': {
         'url': string,

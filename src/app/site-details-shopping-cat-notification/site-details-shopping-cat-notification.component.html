@@ -1,0 +1,23 @@
+
+<!-- <p>You gave open cart from /date/</p>
+<p>your Last purchase was on /date/</p>
+<p>welcome</p> -->
+
+<p *ngIf="userId === null;else shoppingCartOrOrderDetailsTemplate">
+    {{welcomeNewUserMessage}}
+</p>
+<ng-template #shoppingCartOrOrderDetailsTemplate>
+    <p *ngIf="userOpenShoppingCartCreated != null ;else userLastOrderTemplate">
+        You have open cart from {{userOpenShoppingCartCreated.creationDate | date}}
+    </p>
+    <ng-template #userLastOrderTemplate>
+        <p *ngIf="userLastOrder !== false ;else welcomeNewUserMessageTemplate">
+            your Last purchase was on  {{userLastOrder | date}}
+        </p>
+    </ng-template>
+    <ng-template #welcomeNewUserMessageTemplate>
+        {{welcomeNewUserMessage}}
+    </ng-template>
+</ng-template>
+
+

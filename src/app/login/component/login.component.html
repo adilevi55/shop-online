@@ -1,1 +1,43 @@
-<p>login works!</p>
+
+<app-start-or-resume-shopping-btn [userId]=userId
+*ngIf="userId !== null"
+></app-start-or-resume-shopping-btn>
+
+
+<form #formInfo="ngForm" *ngIf="userId === null;else logoutTemplate">
+    
+    <mat-form-field 
+      appearance="outline">
+    <mat-label>Email</mat-label>
+        <input matInput  required 
+        #emailInfo="ngModel" [(ngModel)]="user.email" name="email" 
+        type="text"  placeholder="Email">
+    
+      <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
+        Email Missing</mat-error>
+      </mat-form-field>
+
+        <mat-form-field 
+      appearance="outline">
+    <mat-label>Password</mat-label>
+        <input matInput  required 
+        #passwordInfo="ngModel" [(ngModel)]="user.password" name="password" 
+        type="text"  placeholder="Email">
+    
+      <mat-error *ngIf="passwordInfo.errors?.required && passwordInfo.touched">
+        Password Missing</mat-error>
+      </mat-form-field>
+
+    <button mat-raised-button
+    [disabled]="formInfo.form.invalid" (click)="login()">
+      Login
+    </button>
+</form>
+
+<ng-template #logoutTemplate>
+    <button mat-raised-button (click)="logout()">
+        Logout
+    </button>
+</ng-template>
+<a *ngIf="userId === null"  routerLink="/register">Registered</a>
+
