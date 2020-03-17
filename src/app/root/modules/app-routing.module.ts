@@ -6,7 +6,7 @@ import { MainPageComponent } from 'src/app/main-page/main-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  {path: 'home',component: MainPageComponent},
+  {path: 'home', component: MainPageComponent},
   {path: 'register', loadChildren: () => import('../../register/module/register.module')
   .then(m => m.RegisterModule)},
   {path: 'shopping-page', loadChildren: () => import('../../shopping-page/module/shopping-page.module')

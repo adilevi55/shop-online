@@ -11,6 +11,6 @@ import { ProductTemplateComponent } from '../component/product-template.componen
     CommonModule,
     AngularMaterialModule
   ],
-  exports:[ProductTemplateComponent]
+  exports: [ProductTemplateComponent]
 })
 export class ProductTemplateModule { }

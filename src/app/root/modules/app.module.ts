@@ -29,7 +29,7 @@ import { RouterModule } from '@angular/router';
     LoginModule,
     SiteDetailsModule,
     RouterModule
-    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

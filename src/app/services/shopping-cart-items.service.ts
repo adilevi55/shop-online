@@ -20,7 +20,7 @@ export class ShoppingCartItemsService {
       this.shoppingCart = shoppingcartItems;
       this.shoppingCartListener.next(this.shoppingCart);
     });
-  };
+  }
   getShoppingCartAsObservable() {
     return this.shoppingCartListener.asObservable();
   }

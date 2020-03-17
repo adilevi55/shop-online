@@ -27,19 +27,19 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
     ) { }
-    register(newUser: User){
-     //all the commends must be in the register function
+    register(newUser: User) {
+     // all the commends must be in the register function
       // this.user = newUser;
      // this.isAuth = true;
       // this.userListener.next(this.user);
     }
   login(userLogin: UserLogin) {
-    this.http.post<User>(this.LOGIN, userLogin).subscribe(user =>{
+    this.http.post<User>(this.LOGIN, userLogin).subscribe(user => {
       this.user = user;
       this.userListener.next(this.user);
       this.isAuth = true;
     });
-  };
+  }
   getIsAuth(): boolean {
     return this.isAuth;
   }

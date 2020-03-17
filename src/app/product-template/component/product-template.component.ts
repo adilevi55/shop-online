@@ -7,11 +7,11 @@ import { Product } from '../../interfaces/product.interface';
   styleUrls: ['./product-template.component.css']
 })
 export class ProductTemplateComponent implements OnInit {
-@Input() products: Product[];
+  @Input() products: Product[];
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.products)
+    console.log(this.products);
   }
 
 }

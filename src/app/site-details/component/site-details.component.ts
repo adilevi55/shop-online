@@ -15,7 +15,7 @@ export class SiteDetailsComponent implements OnInit {
   $ordersNumber: Observable<number>;
   $userLastOrder: Observable<Date>;
   $userOpenShoppingCartCreatedDate: Observable<Date>;
-  
+
   constructor(
     private httpProducts: ProductsService,
     private httpOrder: OrdersService,
@@ -26,10 +26,10 @@ export class SiteDetailsComponent implements OnInit {
   this.$productsNumber =   this.httpProducts.getProductsNumber();
   this.$ordersNumber =   this.httpOrder.getOrdersNumber();
 
-  this.httpOrder.getUserLastOrder('5e6e8946c9f7a70004fc097c').subscribe(u =>{
+  this.httpOrder.getUserLastOrder('5e6e8946c9f7a70004fc097c').subscribe(u => {
     console.log(u);
   });
-  this.httpShoppingCart.getUserOpenShoppingCartCreatedDate('5e6e8946c9f7a70004fc097c').subscribe(u =>{
+  this.httpShoppingCart.getUserOpenShoppingCartCreatedDate('5e6e8946c9f7a70004fc097c').subscribe(u => {
     console.log(u);
   });
 

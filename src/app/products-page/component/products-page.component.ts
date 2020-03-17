@@ -15,13 +15,13 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     private productsService: ProductsService
   ) { }
 
-   ngOnInit(){
+   ngOnInit() {
    this.products$ = this.productsService.getAllProducts();
 
   }
 
   ngOnDestroy(): void {
-  
+
   }
 
 }

@@ -26,13 +26,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  register(){
-    if(this.user.password === this.passwordConfirm){
+  register() {
+    if (this.user.password === this.passwordConfirm) {
       console.log(this.user);
-    } else{
+    } else {
       alert('password not much');
-      //change to error throw
+      // change to error throw
     }
-  
+
   }
 }

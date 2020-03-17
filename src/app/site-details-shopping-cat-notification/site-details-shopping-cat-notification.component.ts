@@ -38,7 +38,7 @@ export class SiteDetailsShoppingCatNotificationComponent implements OnInit, OnDe
     });
   }
   ngOnDestroy(): void {
-    if (this.unsubscribable !== undefined){
+    if (this.unsubscribable !== undefined) {
       this.unsubscribable.unsubscribe();
     }
   }

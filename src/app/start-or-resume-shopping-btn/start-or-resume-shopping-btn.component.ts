@@ -16,16 +16,14 @@ export class StartOrResumeShoppingBtnComponent implements OnInit, OnDestroy {
     private httpShoppingCart: ShoppingCartService
 
   ) { }
- 
-
   ngOnInit(): void {
     this.unsubscribable = this.httpShoppingCart
-    .getUserOpenShoppingCartCreatedDate(this.userId).subscribe(shoppingCartCreatedDate =>{
+    .getUserOpenShoppingCartCreatedDate(this.userId).subscribe(shoppingCartCreatedDate => {
         this.userOpenShoppingCart = shoppingCartCreatedDate;
     });
   }
   ngOnDestroy(): void {
-    if (this.unsubscribable !== undefined){
+    if (this.unsubscribable !== undefined) {
       this.unsubscribable.unsubscribe();
     }
   }

@@ -35,15 +35,15 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       this.shoppingCart = res;
     }
     this.shoppingCartItemsService.getShoppingCartItems(this.shoppingCart._id);
-    this.shoppingCartItemsService.shoppingCartListener.subscribe(cartItems =>{
+    this.shoppingCartItemsService.shoppingCartListener.subscribe(cartItems => {
       this.shoppingCartItems = cartItems;
     });
   });
   }
-  deleteCartItem(id){
+  deleteCartItem(id) {
     this.shoppingCartItemsService.deleteCartItem(id);
   }
-  deleteAllCartItems(){
+  deleteAllCartItems() {
     this.shoppingCartItemsService.deleteAllCartItems(this.shoppingCart._id);
   }
   ngOnDestroy(): void {
