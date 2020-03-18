@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { ShoppingCart } from '../interfaces/shopping-cart.interface';
-import { ShoppingCartItem } from '../interfaces/shopping-cart-item.interface';
+import { ShoppingCartItem, CartItemAddToCart } from '../interfaces/shopping-cart-item.interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class ShoppingCartItemsService {
   BASE_URL = 'https://shop-online-server.herokuapp.com/api/shopping-cart-item/';
   ADD_CART_ITEM = this.BASE_URL + 'add';
   DELETE_ALL_CARTS_ITEMS = this.BASE_URL + 'all-items/';
-  shoppingCart: ShoppingCartItem[];
+  shoppingCart: ShoppingCartItem[] = [];
   shoppingCartListener: BehaviorSubject<ShoppingCartItem[]> = new BehaviorSubject([]);
   constructor(private http: HttpClient) { }
 
@@ -24,7 +24,7 @@ export class ShoppingCartItemsService {
   getShoppingCartAsObservable() {
     return this.shoppingCartListener.asObservable();
   }
-  addCartItem(cartItem: ShoppingCartItem) {
+  addCartItem(cartItem: CartItemAddToCart) {
     this.http.post<ShoppingCartItem>(this.ADD_CART_ITEM, cartItem).subscribe(newCartItem => {
       this.shoppingCart.push(newCartItem);
       this.shoppingCartListener.next(this.shoppingCart);
@@ -43,5 +43,9 @@ export class ShoppingCartItemsService {
       this.shoppingCart = newShoppingCart;
       this.shoppingCartListener.next(this.shoppingCart);
     });
+  }
+  userLogOutDeleteShoppingCartItems() {
+    this.shoppingCart = [];
+    this.shoppingCartListener.next([]);
   }
 }

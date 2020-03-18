@@ -25,14 +25,6 @@ export class SiteDetailsComponent implements OnInit {
   ngOnInit(): void {
   this.$productsNumber =   this.httpProducts.getProductsNumber();
   this.$ordersNumber =   this.httpOrder.getOrdersNumber();
-
-  this.httpOrder.getUserLastOrder('5e6e8946c9f7a70004fc097c').subscribe(u => {
-    console.log(u);
-  });
-  this.httpShoppingCart.getUserOpenShoppingCartCreatedDate('5e6e8946c9f7a70004fc097c').subscribe(u => {
-    console.log(u);
-  });
-
-  }
+ }
 
 }

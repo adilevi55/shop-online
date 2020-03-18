@@ -1,1 +1,93 @@
 <p>order works!</p>
+<app-shopping-cart-template
+ [shoppingCartItems]="shoppingCartItems$|async"
+ [orderShoppingCart]="true"
+ ></app-shopping-cart-template>
+
+
+
+ <form #formInfo="ngForm">
+    
+    <mat-form-field
+    appearance="outline">
+        <mat-label>Choose a Shpping Date</mat-label>
+        <input matInput [matDatepicker]="picker"
+        required  [min]="minShippingDate"
+        #shppingDateInfo="ngModel" [(ngModel)]="order.shppingDate" name="shppingDate" 
+       placeholder="Shpping Date"  [matDatepickerFilter]="shippingDateFilter"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-error *ngIf="shppingDateInfo.errors?.required && shppingDateInfo.touched">
+            Shpping Date Missing</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Shpping Street</mat-label>
+        <input matInput  required 
+        #shppingStreetInfo="ngModel" [(ngModel)]="order.shppingStreet" name="shppingStreet" 
+        type="text"  placeholder="Street">
+    
+      <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
+        Shpping Street Missing</mat-error>
+      </mat-form-field>
+
+      <mat-form-field 
+      appearance="outline">
+    <mat-label>Shipping City</mat-label>
+        <input matInput  required 
+        #shippingCityInfo="ngModel" [(ngModel)]="order.shippingCity" name="shippingCity" 
+        type="text"  placeholder="Shipping City">
+    
+      <mat-error *ngIf="shippingCityInfo.errors?.required && shippingCityInfo.touched">
+        Hous Number Missing</mat-error>
+      </mat-form-field>
+
+      <div class="creditCard">
+
+        <mat-form-field 
+        appearance="outline">
+      <mat-label>Card Number</mat-label>
+          <input matInput  required 
+          #cardNumberInfo="ngModel" [(ngModel)]="order.creditCard.cardNumber" name="cardNumber" 
+          type="text"  placeholder="Card Number">
+      
+        <mat-error *ngIf="cardNumberInfo.errors?.required && cardNumberInfo.touched">
+            Card Number Missing</mat-error>
+        </mat-form-field>
+
+        <mat-form-field 
+        appearance="outline">
+        <!-- chang to date pike format YY/MM  -->
+      <mat-label>Expiration Date</mat-label>
+          <input matInput  required 
+          #expirationDateInfo="ngModel" [(ngModel)]="order.creditCard.expirationDate" name="expirationDate" 
+          type="text"  placeholder="Expiration Date">
+      
+        <mat-error *ngIf="expirationDateInfo.errors?.required && expirationDateInfo.touched">
+            Expiration Date Missing</mat-error>
+        </mat-form-field>
+
+        <mat-form-field 
+        appearance="outline">
+      <mat-label>CVV</mat-label>
+          <input matInput  required 
+          #cvvInfo="ngModel" [(ngModel)]="order.creditCard.cvv" name="cvv" 
+          type="text"  placeholder="CVV">
+      
+        <mat-error *ngIf="cvvInfo.errors?.required && cvvInfo.touched">
+            CVV Missing</mat-error>
+        </mat-form-field>
+      </div>
+    
+      <p>finalPrice: {{order.finalPrice}}</p>
+    
+    
+      <button mat-raised-button
+    [disabled]="formInfo.form.invalid" 
+    (click)="UserOrder()">
+    Order
+    </button>
+</form>

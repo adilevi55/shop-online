@@ -5,19 +5,22 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from '../component/app.component';
 import { MainNavBarModule } from 'src/app/main-nav-bar/module/main-nav-bar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SiteDetailsModule } from 'src/app/site-details/module/site-details.module';
 import { LoginModule } from 'src/app/login/module/login.module';
 import { ShearModule } from './shear.module';
 import { MainPageComponent } from 'src/app/main-page/main-page.component';
 import { AboutComponent } from 'src/app/about/about.component';
 import { RouterModule } from '@angular/router';
+import { entryComponents } from './entryComponents';
+import { HttpErrorInteceptor } from 'src/app/services/error.inteceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainPageComponent,
-    AboutComponent
+    AboutComponent,
+    entryComponents
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,10 @@ import { RouterModule } from '@angular/router';
     RouterModule
 
   ],
-  providers: [],
+  entryComponents: [entryComponents],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInteceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

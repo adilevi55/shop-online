@@ -66,7 +66,20 @@
         Phone Number Missing</mat-error>
       </mat-form-field>
    
-      city
+      <mat-form-field appearance="outline">
+        <mat-label>City</mat-label>
+      <mat-select  
+      type="text"  
+     [(ngModel)]="user.city" required
+     #cityInfo="ngModel"  name="city"
+     >
+        <mat-option *ngFor="let c of cities" [value]="c.english_name">
+          {{c.english_name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="cityInfo.errors?.required && cityInfo.touched">
+        City Missing</mat-error>
+    </mat-form-field>
 
       <mat-form-field 
       appearance="outline">
@@ -82,9 +95,9 @@
       <mat-form-field 
       appearance="outline">
     <mat-label>Hous Number</mat-label>
-        <input matInput  required 
+        <input matInput  required min="1"
         #housNumberInfo="ngModel" [(ngModel)]="user.housNumber" name="housNumber" 
-        type="text"  placeholder="Street">
+        type="number"  placeholder="Street">
     
       <mat-error *ngIf="housNumberInfo.errors?.required && housNumberInfo.touched">
         Hous Number Missing</mat-error>

@@ -9,19 +9,17 @@ export interface User {
     'street': string;
     'housNumber': number;
 }
-
-export interface UserRegisterPasswordConfirm {
-    '_id': string;
+export interface UserRegister {
     'firstName': string;
     'lastName': string;
     'email': string;
     'password': string;
-    'passwordConfirm': string;
     'phone': string;
     'city': string;
     'street': string;
     'housNumber': number;
 }
+
 export interface UserLogin {
     'email': string;
     'password': string;

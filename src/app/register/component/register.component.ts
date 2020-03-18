@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { User, UserRegisterPasswordConfirm } from 'src/app/interfaces/user.interface';
-import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
+import { UserRegister } from 'src/app/interfaces/user.interface';
+import { City } from 'src/app/interfaces/city.interface';
+import { CityService } from 'src/app/services/http/city.service';
+import { AuthService } from 'src/app/services/authentication/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -8,8 +10,7 @@ import { FormGroup, FormControl, Validators, AbstractControl, ValidatorFn } from
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  user: User = {
-    _id: null,
+  user: UserRegister = {
     firstName: null,
     lastName: null,
     email: null,
@@ -19,17 +20,25 @@ export class RegisterComponent implements OnInit {
     street: null,
     housNumber: null
   };
+  cities: City[] = [];
   public passwordConfirm = '';
 
-  constructor() { }
+  constructor(
+    private cityService: CityService,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
-
+    this.cityService.getCities().subscribe(cities => {
+      this.cities = cities;
+    });
   }
   register() {
     if (this.user.password === this.passwordConfirm) {
       console.log(this.user);
+    this.authService.register(this.user);
     } else {
+      
       alert('password not much');
       // change to error throw
     }

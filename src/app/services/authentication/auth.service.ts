@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { UserLogin, User } from 'src/app/interfaces/user.interface';
+import { UserLogin, User, UserRegister } from 'src/app/interfaces/user.interface';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ShoppingCartService } from '../shopping-cart.service';
+import { ShoppingCartItemsService } from '../shopping-cart-items.service';
+import { City } from 'src/app/interfaces/city.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +14,7 @@ export class AuthService {
   isAuth = false;
   BASE_URL = 'https://shop-online-server.herokuapp.com/api/authentication/';
   LOGIN = this.BASE_URL + 'login';
+  REGISTER = this.BASE_URL + 'register';
   user: User;
   userListener: BehaviorSubject<User> = new BehaviorSubject({
     _id: null,
@@ -25,13 +29,18 @@ export class AuthService {
   });
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private shoppingCartService: ShoppingCartService,
     ) { }
-    register(newUser: User) {
+    register(newUser: UserRegister) {
+      this.http.post<User>(this.REGISTER, newUser).subscribe(user =>{
+        this.user = user;
+        this.isAuth = true;
+        this.userListener.next(this.user);
+        this.router.navigate(['/shopping-page']);
+      })
      // all the commends must be in the register function
-      // this.user = newUser;
-     // this.isAuth = true;
-      // this.userListener.next(this.user);
+     
     }
   login(userLogin: UserLogin) {
     this.http.post<User>(this.LOGIN, userLogin).subscribe(user => {
@@ -57,6 +66,9 @@ export class AuthService {
     });
     this.isAuth = false;
     this.router.navigate(['/']);
+    this.shoppingCartService.userLogOutDeleteShoppingCart();
+
   }
+
 
 }

@@ -4,3 +4,8 @@ export interface ShoppingCart {
     'user': string;
     'creationDate': Date;
 }
+export interface ShoppingCartCreat {
+    'shoppingCartOpen': boolean;
+    'user': string;
+    'creationDate': Date;
+}

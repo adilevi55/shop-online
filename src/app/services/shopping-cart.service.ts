@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { ShoppingCart } from '../interfaces/shopping-cart.interface';
+import { ShoppingCart, ShoppingCartCreat } from '../interfaces/shopping-cart.interface';
 import { ShoppingCartItem } from '../interfaces/shopping-cart-item.interface';
+import { ShoppingCartItemsService } from './shopping-cart-items.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,18 +19,41 @@ export class ShoppingCartService {
     user: null,
     creationDate: null,
   });
-   constructor(private http: HttpClient) { }
-   getUserOpenShoppingCartCreatedDate(userId): Observable<ShoppingCart> {
-       return this.http.get<ShoppingCart>(this.OPEN_SHOPPING_CART + userId);
+   constructor(
+     private http: HttpClient,
+     private shoppingCartItemsService: ShoppingCartItemsService) { }
+   getUserOpenShoppingCartCreated(userId) {
+        this.http.get<ShoppingCart>(this.OPEN_SHOPPING_CART + userId).subscribe(shoppingCart => {
+          this.shoppingCart = shoppingCart;
+          this.shoppingCartListener.next(this.shoppingCart);
+        });
      }
-    creatShoppingCart(userId: string): Observable<ShoppingCart> {
-      const newShoppingCart: ShoppingCart = {
-        _id: null,
+     async creatShoppingCart(userId: string) {
+      const newShoppingCart: ShoppingCartCreat = {
         shoppingCartOpen: true,
         user: userId,
         creationDate: new Date()
       };
-      return this.http.post<ShoppingCart>(this.ADD_SHOPPING_CART, newShoppingCart);
+      await this.http.post<ShoppingCart>(this.ADD_SHOPPING_CART, newShoppingCart).subscribe(newShoppingCartFromDB => {
+        this.shoppingCart = newShoppingCartFromDB;
+        this.shoppingCartListener.next(this.shoppingCart);
+      });
+    }
+    userLogOutDeleteShoppingCart() {
+      this.shoppingCart = {
+        _id: null,
+        shoppingCartOpen: null,
+        user: null,
+        creationDate: null,
+      };
+      this.shoppingCartListener.next({
+        _id: null,
+        shoppingCartOpen: null,
+        user: null,
+        creationDate: null,
+      });
+      this.shoppingCartItemsService.userLogOutDeleteShoppingCartItems();
+
     }
 
  }

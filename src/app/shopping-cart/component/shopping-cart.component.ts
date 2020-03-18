@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'src/app/services/authentication/auth.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from 'src/app/interfaces/shopping-cart.interface';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
 import { ShoppingCartItem } from 'src/app/interfaces/shopping-cart-item.interface';
@@ -16,6 +16,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   userId: string;
   shoppingCart: ShoppingCart;
   shoppingCartItems: ShoppingCartItem[] = [];
+  shoppingCartItems$: Observable<ShoppingCartItem[]>;
   constructor(
     private authService: AuthService,
     private shoppingCartService: ShoppingCartService,
@@ -23,28 +24,23 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ) { }
 
-
   ngOnInit(): void {
   this.userId = this.authService.user._id;
-  this.unsubscribable = this.shoppingCartService.getUserOpenShoppingCartCreatedDate(this.userId).subscribe(res => {
-    if (res === null) {
-      this.shoppingCartService.creatShoppingCart(this.userId).subscribe(newShoppingCart => {
-        this.shoppingCart = newShoppingCart;
-      });
+  console.log(this.shoppingCartService.shoppingCart);
+  if (this.shoppingCartService.shoppingCart === null) {
+      this.shoppingCartService.creatShoppingCart(this.userId);
+      this.shoppingCart = this.shoppingCartService.shoppingCart;
     } else {
-      this.shoppingCart = res;
+      this.shoppingCart = this.shoppingCartService.shoppingCart;
+      this.shoppingCartItemsService.getShoppingCartItems(this.shoppingCart._id);
     }
-    this.shoppingCartItemsService.getShoppingCartItems(this.shoppingCart._id);
-    this.shoppingCartItemsService.shoppingCartListener.subscribe(cartItems => {
-      this.shoppingCartItems = cartItems;
-    });
-  });
+  this.shoppingCartItems$ = this.shoppingCartItemsService.getShoppingCartAsObservable();
   }
   deleteCartItem(id) {
     this.shoppingCartItemsService.deleteCartItem(id);
   }
   deleteAllCartItems() {
-    this.shoppingCartItemsService.deleteAllCartItems(this.shoppingCart._id);
+    this.shoppingCartItemsService.deleteAllCartItems( this.shoppingCartService.shoppingCart._id);
   }
   ngOnDestroy(): void {
     if (this.unsubscribable !== undefined) {

@@ -27,13 +27,14 @@ export class SiteDetailsShoppingCatNotificationComponent implements OnInit, OnDe
     this.authService.userListener.subscribe(user => {
       this.userId = user._id;
       if (this.userId !== null) {
+
+      this.httpShoppingCart.getUserOpenShoppingCartCreated(this.userId);
+      this.unsubscribable = this.httpShoppingCart.shoppingCartListener.subscribe(shoppingCart => {
+        this.userOpenShoppingCartCreated = shoppingCart;
+      });
       this.unsubscribable = this.httpOrder.getUserLastOrder(this.userId).subscribe(order => {
         this.userLastOrder = order;
       });
-      this.unsubscribable = this.httpShoppingCart
-       .getUserOpenShoppingCartCreatedDate(this.userId).subscribe(shoppingCartCreated => {
-         this.userOpenShoppingCartCreated = shoppingCartCreated;
-       });
       }
     });
   }

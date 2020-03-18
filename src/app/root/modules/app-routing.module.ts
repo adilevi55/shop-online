@@ -11,6 +11,8 @@ const routes: Routes = [
   .then(m => m.RegisterModule)},
   {path: 'shopping-page', loadChildren: () => import('../../shopping-page/module/shopping-page.module')
   .then(m => m.ShoppingPageModule), canActivate: [AuthGuard]},
+  {path: 'order', loadChildren: () => import('../../order/module/order.module')
+  .then(m => m.OrderModule), canActivate: [AuthGuard]},
    {path: '**', loadChildren: () => import('../../page-not-found-404/module/page-not-found-404.module')
    .then(m => m.PageNotFound404Module)},
 ];

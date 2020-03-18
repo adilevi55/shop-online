@@ -17,3 +17,11 @@ export interface ShoppingCartItem {
     'generalPrice': number;
     'quantity': number;
  }
+
+export interface CartItemAddToCart {
+    'product': string;
+    'shoppingCart': string;
+    'generalPrice': number;
+    'quantity': number;
+ }
+
