@@ -16,8 +16,8 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   ) { }
 
    ngOnInit() {
-   this.products$ = this.productsService.getAllProducts();
-
+    this.productsService.getAllProducts();
+    this.products$ = this.productsService.getProductsAsObservable();
   }
 
   ngOnDestroy(): void {

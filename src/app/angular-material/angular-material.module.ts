@@ -35,7 +35,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatTooltipModule,
     MatPaginatorModule,
     MatDatepickerModule,
-    MatNativeDateModule 
+    MatNativeDateModule
   ]
 })
 export class AngularMaterialModule { }

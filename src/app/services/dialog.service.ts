@@ -2,6 +2,7 @@ import { Injectable, TemplateRef } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogProductComponent } from '../dialog/dialog-product/dialog-product.component';
 import { DialogMassageComponent } from '../dialog/dialog-massage/dialog-massage.component';
+import { DialogOrderSuccessComponent } from '../dialog/dialog-order-success/dialog-order-success.component';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class DialogService {
   dialogOptions(dialogName: string): TemplateRef<any> {
     const DIALOGS = {
       product: DialogProductComponent,
-      massage: DialogMassageComponent
+      massage: DialogMassageComponent,
+      orderMassageSuccess: DialogOrderSuccessComponent
     };
     return DIALOGS[dialogName];
   }

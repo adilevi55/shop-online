@@ -27,7 +27,8 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   this.userId = this.authService.user._id;
   console.log(this.shoppingCartService.shoppingCart);
-  if (this.shoppingCartService.shoppingCart === null) {
+  if (this.shoppingCartService.shoppingCart === null ||
+      this.shoppingCartService.shoppingCart._id === null) {
       this.shoppingCartService.creatShoppingCart(this.userId);
       this.shoppingCart = this.shoppingCartService.shoppingCart;
     } else {

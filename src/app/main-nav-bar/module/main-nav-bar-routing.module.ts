@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductsPageComponent } from '../component/products-page.component';
+import { MainNavBarComponent } from '../component/main-nav-bar.component';
 
 
 const routes: Routes = [
-  {path: '', component: ProductsPageComponent}
+  {path: '', component: MainNavBarComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProductsPageRoutingModule { }
+export class MainNavBarModuleRoutingModule { }

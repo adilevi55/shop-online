@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private cityService: CityService,
-    private authService: AuthService
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -36,9 +36,8 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.user.password === this.passwordConfirm) {
       console.log(this.user);
-    this.authService.register(this.user);
+      this.authService.register(this.user);
     } else {
-      
       alert('password not much');
       // change to error throw
     }

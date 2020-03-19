@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Order } from '../interfaces/order.interface';
 import { ShoppingCartService } from './shopping-cart.service';
-import { Router } from '@angular/router';
+import { DialogService } from './dialog.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,8 @@ export class OrdersService {
   constructor(
     private http: HttpClient,
     private shoppingCartService: ShoppingCartService,
-    private router: Router
+    private dialogService: DialogService,
+
     ) { }
   getOrdersNumber(): Observable<number> {
       return this.http.get<number>(this.ALL_ORDER_NUMBER);
@@ -29,8 +30,8 @@ export class OrdersService {
   userOrder(order: Order) {
     this.http.post<Order>(this.USER_ORDER, order).subscribe(() => {
       this.shoppingCartService.userLogOutDeleteShoppingCart();
-      this.router.navigate(['/home']);
+      this.dialogService.openDialog('orderMassageSuccess');
     });
-  
+
   }
 }

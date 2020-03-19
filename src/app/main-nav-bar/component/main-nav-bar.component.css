@@ -1,0 +1,8 @@
+
+
+.toolbar-div{
+    display: flex;
+}
+.massage-to-user {
+    justify-content: end;
+  }

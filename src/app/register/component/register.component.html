@@ -5,7 +5,7 @@
     <mat-label>Email</mat-label>
         <input matInput  required 
         #emailInfo="ngModel" [(ngModel)]="user.email" name="email" 
-        type="text"  placeholder="Email">
+        type="email"  placeholder="Email">
     
       <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
         Email Missing</mat-error>
@@ -60,7 +60,7 @@
     <mat-label>Phone Number</mat-label>
         <input matInput  required 
         #phoneInfo="ngModel" [(ngModel)]="user.phone" name="phone" 
-        type="text"  placeholder="Phone Number">
+        type="tel"  placeholder="Phone Number">
     
       <mat-error *ngIf="phoneInfo.errors?.required && phoneInfo.touched">
         Phone Number Missing</mat-error>

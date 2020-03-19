@@ -2,10 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { UserLogin, User, UserRegister } from 'src/app/interfaces/user.interface';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { ShoppingCartItemsService } from '../shopping-cart-items.service';
-import { City } from 'src/app/interfaces/city.interface';
+import { DialogService } from '../dialog.service';
 
 @Injectable({
   providedIn: 'root'
@@ -31,16 +30,16 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private shoppingCartService: ShoppingCartService,
+    private dialogService: DialogService
     ) { }
     register(newUser: UserRegister) {
-      this.http.post<User>(this.REGISTER, newUser).subscribe(user =>{
+      this.http.post<User>(this.REGISTER, newUser).subscribe(user => {
         this.user = user;
         this.isAuth = true;
         this.userListener.next(this.user);
         this.router.navigate(['/shopping-page']);
-      })
-     // all the commends must be in the register function
-     
+      });
+
     }
   login(userLogin: UserLogin) {
     this.http.post<User>(this.LOGIN, userLogin).subscribe(user => {

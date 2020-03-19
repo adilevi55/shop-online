@@ -1,1 +1,15 @@
-<p>main-nav-bar works!</p>
+<mat-toolbar color="primary">
+ 
+  
+    <mat-toolbar-row class="toolbar">
+        <div class="toolbar-div">
+
+      <a routerLink="/home">Shop Online</a>
+      <div class="massage-to-user">
+        <span>{{user._id? user.firstName + ' ' + user.lastName   :"Hello guest"}}</span>
+      </div>
+    </div>
+    </mat-toolbar-row>
+  
+
+  </mat-toolbar>

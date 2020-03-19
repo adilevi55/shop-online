@@ -12,7 +12,12 @@ export class ShoppingCartService {
   BASE_URL = 'https://shop-online-server.herokuapp.com/api/shopping-cart/';
   OPEN_SHOPPING_CART = this.BASE_URL + 'open-shopping-cart/';
   ADD_SHOPPING_CART = this.BASE_URL + 'add';
-  shoppingCart: ShoppingCart;
+  shoppingCart: ShoppingCart = {
+    _id: null,
+    shoppingCartOpen: null,
+    user: null,
+    creationDate: null,
+  };
   shoppingCartListener: BehaviorSubject<ShoppingCart> = new BehaviorSubject({
     _id: null,
     shoppingCartOpen: null,
