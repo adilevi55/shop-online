@@ -1,0 +1,12 @@
+.shopping-nav-bar{
+    position: fixed;
+    z-index: 1000;
+    top: 60px;
+    width: 100%;
+}
+.spacer{
+    height: 60px;
+}
+.not-display{
+    display: none;
+}

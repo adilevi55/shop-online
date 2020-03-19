@@ -1,3 +1,15 @@
-<p>Available products in our store - {{($productsNumber| async)}}</p>
-<p>Number of orders submitted in oure store - {{($ordersNumber| async)}} </p>
-<app-site-details-shopping-cat-notification></app-site-details-shopping-cat-notification>
+<div class="site-details-continer">
+    <div class="site-detail">
+            <p>Available products in our store</p>
+            <p>{{($productsNumber| async)}}</p>
+    </div>
+
+    <div class="site-detail">
+        <p>Orders submitted in oure store</p>
+        <p>{{($ordersNumber| async)}}</p>
+    </div>
+
+    <div class="site-detail">
+        <app-site-details-shopping-cat-notification></app-site-details-shopping-cat-notification>
+    </div>
+</div>

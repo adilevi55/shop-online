@@ -1,8 +1,16 @@
-<div *ngFor="let p of products">
-    <p>{{p.name}}</p>
-    <p>{{p.category.name}}</p>
-    <p>{{p.price}}</p>
-    <p>{{p.img.url}}</p>
-    <!-- <img src="{{p.img.url}}"> -->
-    <button (click)="addToCart(p)">add to cart</button>
+<div class="spacer"></div>
+<div fxLayout="row wrap" 
+    fxLayoutAlign="center center"
+    class="product-continer"
+    fxLayoutGap="5px"
+>
+<div *ngFor="let p of products" fxFlex="calc(50% - 5px)"
+    class="product-card" fxLayout="row wrap">
+    <img src="{{p.img.url}}" class="product-img"
+    fxFlexAlign="center" fxFlex="100%">
+    <p  fxFlex="100%">{{p.price}}</p>
+    <p fxFlex="100%">{{p.name}}</p>
+    <p fxFlex="100%">{{p.category.name}}</p>
+    <button (click)="addToCart(p)" fxFlex="100%">add to cart</button>
+</div>
 </div>

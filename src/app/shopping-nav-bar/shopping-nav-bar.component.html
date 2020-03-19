@@ -1,1 +1,36 @@
-<p>shopping-nav-bar works!</p>
+<mat-toolbar class="mat-toolbar">
+  
+    <mat-toolbar-row class="toolbar-first-row">
+        <div class="toolbar-div">
+
+            <mat-icon 
+            (click)="productMenuPanelOpenState = productMenuPanelOpenState?false:true" 
+            >menu</mat-icon>
+            <mat-icon 
+            (click)="searchPanelOpenState = searchPanelOpenState?false:true" 
+           >search</mat-icon>         
+            <mat-icon 
+            (click)="shoppingCartPanelOpenState = shoppingCartPanelOpenState?false:true" 
+            matBadge="{{numberOfCartItems}}"
+            >shopping_cart</mat-icon>          
+      <div class="massage-to-user">
+
+      </div>
+    </div>
+
+
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <app-product-nav-bar class="toolbar-second-row-components"
+        *ngIf="productMenuPanelOpenState"
+        ></app-product-nav-bar>
+
+        <app-search-product class="toolbar-second-row-components"
+        *ngIf="searchPanelOpenState"
+        ></app-search-product>
+
+        <app-shopping-cart class="toolbar-second-row-components"
+        *ngIf="shoppingCartPanelOpenState"
+        ></app-shopping-cart>
+    </mat-toolbar-row>
+   </mat-toolbar>

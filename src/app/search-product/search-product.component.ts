@@ -12,7 +12,7 @@ export class SearchProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  searchProductFun(){
+  searchProductFun() {
     this.productsService.searchProduct(this.searchProduct);
   }
 

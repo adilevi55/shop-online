@@ -1,0 +1,27 @@
+.site-details-continer{
+    background-color: rgb(250,250,250);
+    border-radius: 2px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    margin:5%;
+    padding: 2.5% 0;
+}
+.site-detail{
+    padding: 2.5% 5%;
+    margin:5%;
+    text-align: center;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.site-detail:nth-child(1){
+    background-color: #03a9f4;
+}
+.site-detail:nth-child(2){
+    background-color: #007ac1;
+}
+.site-detail:nth-child(3){
+    background-color: #67daff;
+}
+p{
+    margin:0;
+}

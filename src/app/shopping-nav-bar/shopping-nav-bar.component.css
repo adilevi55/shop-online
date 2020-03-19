@@ -1,0 +1,22 @@
+
+
+.toolbar-div{
+    display: flex;
+}
+.massage-to-user {
+    justify-content: end;
+  }
+.mat-toolbar{
+    background-color: #ccc7b9;
+}
+.toolbar-second-row-components{
+    position: fixed;
+    z-index: 1000;
+    top: 120px;
+    left: 0;
+    width: 100%; 
+    background-color: #ffffff;
+}
+
+.shopping-cart-component{
+}

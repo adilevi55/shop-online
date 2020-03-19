@@ -1,0 +1,7 @@
+.cart-container{
+    overflow: auto;
+    height: 50vh;
+}
+.cart-item-img{
+    height: 100px;
+}

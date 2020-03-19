@@ -1,11 +1,8 @@
-
-<app-start-or-resume-shopping-btn [userId]=userId
-*ngIf="userId !== null"
-></app-start-or-resume-shopping-btn>
+<div class="form-continer">
 
 
-<form #formInfo="ngForm" *ngIf="userId === null;else logoutTemplate">
-    
+<form #formInfo="ngForm" class="form" *ngIf="userId === null;else logoutTemplate" fxLayout="column" fxLayoutAlign="center center">
+    <h1>Login</h1>
     <mat-form-field 
       appearance="outline">
     <mat-label>Email</mat-label>
@@ -28,16 +25,26 @@
         Password Missing</mat-error>
       </mat-form-field>
 
-    <button mat-raised-button
+    <button mat-raised-button  class="loginBtn"
     [disabled]="formInfo.form.invalid" (click)="login()">
       Login
     </button>
 </form>
 
-<ng-template #logoutTemplate>
-    <button mat-raised-button (click)="logout()">
-        Logout
-    </button>
-</ng-template>
+
 <a *ngIf="userId === null"  routerLink="/register">Registered</a>
 
+
+<div class="user-logged-in" fxLayout="column" fxLayoutAlign="center center">
+
+  <app-start-or-resume-shopping-btn [userId]=userId
+  *ngIf="userId !== null"
+  ></app-start-or-resume-shopping-btn>
+  <ng-template #logoutTemplate >
+    <button fxLayoutAlign="center center" class="loginBtn" mat-raised-button color="#67daff" (click)="logout()">
+        Logout
+    </button>
+  </ng-template>
+  </div>
+
+</div>

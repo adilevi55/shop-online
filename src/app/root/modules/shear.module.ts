@@ -4,13 +4,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 import { ShoppingCartTemplateComponent } from 'src/app/shopping-cart-template/shopping-cart-template.component';
 import { ProductTemplateModule } from 'src/app/product-template/module/product-template.module';
+import { ProductNavBarComponent } from 'src/app/product-nav-bar/product-nav-bar.component';
+import { SearchProductComponent } from 'src/app/search-product/search-product.component';
 
 
 @NgModule({
-  declarations: [ShoppingCartTemplateComponent],
+  declarations: [
+    ShoppingCartTemplateComponent,
+    ProductNavBarComponent,
+    SearchProductComponent
+  ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -18,7 +25,9 @@ import { ProductTemplateModule } from 'src/app/product-template/module/product-t
     ReactiveFormsModule,
     AngularMaterialModule,
     ProductTemplateModule,
-    ShoppingCartTemplateComponent
+    ShoppingCartTemplateComponent,
+    ProductNavBarComponent,
+    SearchProductComponent
     
   ]
 })

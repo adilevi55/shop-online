@@ -17,6 +17,7 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   shoppingCart: ShoppingCart;
   shoppingCartItems: ShoppingCartItem[] = [];
   shoppingCartItems$: Observable<ShoppingCartItem[]>;
+  cartItemsFinalPrice = 0;
   constructor(
     private authService: AuthService,
     private shoppingCartService: ShoppingCartService,
@@ -26,7 +27,6 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
   this.userId = this.authService.user._id;
-  console.log(this.shoppingCartService.shoppingCart);
   if (this.shoppingCartService.shoppingCart === null ||
       this.shoppingCartService.shoppingCart._id === null) {
       this.shoppingCartService.creatShoppingCart(this.userId);
@@ -36,6 +36,11 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
       this.shoppingCartItemsService.getShoppingCartItems(this.shoppingCart._id);
     }
   this.shoppingCartItems$ = this.shoppingCartItemsService.getShoppingCartAsObservable();
+  this.shoppingCartItemsService.getShoppingCartAsObservable().subscribe(cartItems => {
+    cartItems.find(c => {
+      this.cartItemsFinalPrice += c.generalPrice;
+      });
+  });
   }
   deleteCartItem(id) {
     this.shoppingCartItemsService.deleteCartItem(id);

@@ -2,12 +2,18 @@
 (click)="deleteAllCartItems()"
 [disabled]="(shoppingCartItems$|async).length === 0"
 >delete all</button>
-<button mat-raised-button
-[disabled]="(shoppingCartItems$|async).length === 0"
-routerLink="/order">
-order
-</button>
-<app-shopping-cart-template
- [shoppingCartItems]="shoppingCartItems$|async"
- [orderShoppingCart]="false"
- ></app-shopping-cart-template>
+
+<div>
+    <app-shopping-cart-template class="shopping-cart-template"
+    [shoppingCartItems]="shoppingCartItems$|async"
+    [orderShoppingCart]="false"
+    ></app-shopping-cart-template>  
+</div>
+<div>
+    <span>Total Price: {{cartItemsFinalPrice}}</span>
+    <button mat-raised-button
+    [disabled]="(shoppingCartItems$|async).length === 0"
+    routerLink="/order">
+    order
+    </button>
+</div>

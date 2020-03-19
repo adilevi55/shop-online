@@ -1,9 +1,15 @@
-<div *ngIf="shoppingCartItems.length > 0">
-    <div *ngFor="let i of shoppingCartItems">
+<div *ngIf="shoppingCartItems.length > 0" class="cart-container"
+    fxLayout="row wrap" 
+    >
+        <!-- fxLayoutGap="10px" -->
+
+    <div *ngFor="let i of shoppingCartItems" 
+    fxFlex="40%"
+    >
+        <img class="cart-item-img" src="{{i.product.img.url}}">
         <p>{{i.product.name}}</p>
         <p>{{i.generalPrice}}</p>
         <p>{{i.quantity}}</p>
-        <!-- <p>{{i.product.img.url}}</p> -->
         <button
         *ngIf="!orderShoppingCart"
         (click)="deleteCartItem(i._id)"

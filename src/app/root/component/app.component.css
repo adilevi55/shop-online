@@ -1,0 +1,9 @@
+.main-nav-bar{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+}
+.spacer{
+    height: 60px;
+}
