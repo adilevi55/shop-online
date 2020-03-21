@@ -1,0 +1,25 @@
+.form{
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 3px;
+
+}
+.search-mat-form-input{
+    border-radius: 0;
+}
+.search-icon{
+    color:#67daff;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+.search-btn{
+    border:none;   
+    border: 1px solid rgba(0,0,0,.12);
+    border-radius: 0;
+    margin-bottom: 32px;
+    margin-top: 5px;}
+
+.mat-form-field-underline{
+}
+.mat-form-field-appearance-legacy{
+}

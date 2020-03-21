@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Product } from 'src/app/interfaces/product.interface';
-import { CartItemAddToCart } from 'src/app/interfaces/shopping-cart-item.interface';
+import { CartItemAddToCartReq } from 'src/app/interfaces/shopping-cart-item.interface';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Subscription } from 'rxjs';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
@@ -13,7 +13,7 @@ import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.s
 })
 export class DialogProductComponent implements OnInit, OnDestroy {
   product: Product;
-  cartItem: CartItemAddToCart =  {
+  cartItem: CartItemAddToCartReq =  {
 product: null,
 shoppingCart: null,
 generalPrice: null,
@@ -31,6 +31,7 @@ quantity: null,
   ngOnInit(): void {
     this.product = this.data.payload;
     this.cartItem.product = this.product._id;
+    this.cartItem.quantity = 1;
     this.subscription = this.shoppingCartService.shoppingCartListener.subscribe(shoppinCart => {
       this.cartItem.shoppingCart = shoppinCart._id;
     });
@@ -39,6 +40,10 @@ quantity: null,
   addToCart() {
     this.cartItem.generalPrice = this.product.price * this.cartItem.quantity;
     this.shoppingCartItemsService.addCartItem(this.cartItem);
+    this.matDialog.closeAll();
+  }
+
+  userExitDialog() {
     this.matDialog.closeAll();
   }
 

@@ -1,0 +1,46 @@
+<div *ngIf="shoppingCartItems.length > 0" class="cart-container" fxLayout="row wrap">
+    <!-- fxLayoutGap="10px" -->
+
+    <div *ngFor="let i of shoppingCartItems" fxFlex="100%">
+        <h2>{{i.product.category.name}}</h2>
+        <div fxLayout="row">
+
+            <img class="cart-item-img" src="{{i.product.img.url}}" fxFlex="30%">
+            <div fxFlex="70%" fxLayout="row wrap" fxFlexAlign="center center">
+           
+                <div fxFlex="80%" fxLayout="row wrap" fxFlexAlign="center center">
+                    <div fxFlex="100%">
+                        <h3 class="product-name-h3">{{i.product.name}}</h3>
+                    </div>
+               
+                    <form #formInfo="ngForm" class="form" *ngIf="!orderShoppingCart"
+                        (change)="userChangeCartItemQuantity(i)" fxFlex="100%" fxFlexAlign="center center">
+                        <button [disabled]="i.quantity === 1" class="remove-one-quantitiy-btn">
+                            <mat-icon (click)="userRemoveOneQuantity(i)"  >remove_circle_outline</mat-icon>
+                        </button>
+                        <div class="div-input-quantity" fxFlex="40%" fxFlexAlign="center center">
+                            <label class="qty-label">Qty </label>
+                            <input  class="quantity-mat-form-input" min="1" #quantityInfo="ngModel" 
+                                [(ngModel)]="i.quantity" name="quantity" type="number" class="input-quantity">
+                            </div>
+                        <button class="remove-one-quantitiy-btn">
+                            <mat-icon type="button" (click)="userAddOneQuantity(i)">add_circle_outline</mat-icon>
+                        </button>
+                    </form>
+
+                </div>
+                <div fxFlex="20%" fxLayout="row wrap">
+                    <mat-icon class="delete-icon"  *ngIf="!orderShoppingCart" fxFlex="100%"
+                    (click)="deleteCartItem(i._id, i.generalPrice)">delete_outline</mat-icon>
+                    <div fxFlex="100%" fxLayoutAlign="end end">
+                        <span class="general-price-span">{{i.generalPrice | currency}}</span>
+                    </div>
+                </div>
+           
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

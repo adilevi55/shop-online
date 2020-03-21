@@ -30,21 +30,23 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private shoppingCartService: ShoppingCartService,
-    private dialogService: DialogService
     ) { }
     register(newUser: UserRegister) {
       this.http.post<User>(this.REGISTER, newUser).subscribe(user => {
         this.user = user;
         this.isAuth = true;
         this.userListener.next(this.user);
+        this.shoppingCartService.creatShoppingCart(this.user._id);
         this.router.navigate(['/shopping-page']);
       });
 
     }
+
   login(userLogin: UserLogin) {
     this.http.post<User>(this.LOGIN, userLogin).subscribe(user => {
       this.user = user;
       this.userListener.next(this.user);
+      this.shoppingCartService.checkIfUserHasOpenShoppingCart(this.user._id);
       this.isAuth = true;
     });
   }
@@ -63,9 +65,10 @@ export class AuthService {
       street: null,
       housNumber: null
     });
+    this.user = null;
     this.isAuth = false;
-    this.router.navigate(['/']);
     this.shoppingCartService.userLogOutDeleteShoppingCart();
+    this.router.navigate(['/home']);
 
   }
 

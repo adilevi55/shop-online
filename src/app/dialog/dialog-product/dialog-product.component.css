@@ -1,0 +1,30 @@
+.add-to-cart-btn{
+    background: #03a9f4;
+    font-size: x-large;
+    font-weight: 700;
+    color: #ffff;
+}
+.product-card {
+    text-align: center;
+    position: relative;
+    }
+    .product-card-h {
+        margin-bottom:0;
+        color: #666;
+        line-height: initial;
+        }
+    .product-card-price{
+        color:#67daff;
+        font-weight: 700;
+        font-size: 105%;
+    }
+
+.close-dialog-icon{
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    border: 2px #ccc7b9 solid;
+    border-radius: 50%;
+    color: #75726a;
+}
+

@@ -1,18 +1,22 @@
-<app-shopping-cart-template
- [shoppingCartItems]="shoppingCartItems$|async"
- [orderShoppingCart]="true"
- ></app-shopping-cart-template>
+<div class="spacer"></div>
+<div class="div-app-shopping-cart-template">
+  <app-shopping-cart-template 
+  [shoppingCartItems]="shoppingCartItems$|async"
+  [orderShoppingCart]="true"
+  ></app-shopping-cart-template>
+</div>
 
 
 
- <form #formInfo="ngForm">
+
+ <form #formInfo="ngForm" fxLayout="row wrap" fxLayoutGap="5px">
     
-    <mat-form-field
+    <mat-form-field fxFlex="calc(60% - 5px)"
     appearance="outline">
         <mat-label>Choose a Shpping Date</mat-label>
         <input matInput [matDatepicker]="picker"
         required  [min]="minShippingDate"
-        #shppingDateInfo="ngModel" [(ngModel)]="order.shppingDate" name="shppingDate" 
+        #shppingDateInfo="ngModel" [(ngModel)]="orderAddOrderReq.shppingDate" name="shppingDate" 
        placeholder="Shpping Date"  [matDatepickerFilter]="shippingDateFilter"
         >
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -22,22 +26,22 @@
             Shpping Date Missing</mat-error>
       </mat-form-field>
   
-      <mat-form-field 
+      <mat-form-field fxFlex="calc(40% - 5px)"
       appearance="outline">
     <mat-label>Shpping Street</mat-label>
         <input matInput  required 
-        #shppingStreetInfo="ngModel" [(ngModel)]="order.shppingStreet" name="shppingStreet" 
+        #shppingStreetInfo="ngModel" [(ngModel)]="orderAddOrderReq.shppingStreet" name="shppingStreet" 
         type="text"  placeholder="Street">
     
       <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
         Shpping Street Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" fxFlex="calc(100% - 5px)">
         <mat-label>Shipping City</mat-label>
       <mat-select  
       type="text"  
-     [(ngModel)]="order.shippingCity" required
+     [(ngModel)]="orderAddOrderReq.shippingCity" required
      #shippingCityInfo="ngModel"  name="shippingCity"
      >
         <mat-option *ngFor="let c of cities" [value]="c.english_name">
@@ -48,49 +52,71 @@
         Shipping City Missing</mat-error>
     </mat-form-field>
 
-      <div class="creditCard">
+      <div class="creditCard" fxFlex="calc(100% - 5px)"
+        fxLayout="row wrap" fxLayoutGap="5px">
 
-        <mat-form-field 
+        <mat-form-field fxFlex="calc(100% - 5px)"
         appearance="outline">
       <mat-label>Card Number</mat-label>
           <input matInput  required 
-          #cardNumberInfo="ngModel" [(ngModel)]="order.creditCard.cardNumber" name="cardNumber" 
+          #cardNumberInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.cardNumber" name="cardNumber" 
           type="text"  placeholder="Card Number">
       
         <mat-error *ngIf="cardNumberInfo.errors?.required && cardNumberInfo.touched">
             Card Number Missing</mat-error>
         </mat-form-field>
 
-        <mat-form-field 
-        appearance="outline">
-        <!-- chang to date pike format YY/MM  -->
-      <mat-label>Expiration Date</mat-label>
-          <input matInput  required 
-          #expirationDateInfo="ngModel" [(ngModel)]="order.creditCard.expirationDate" name="expirationDate" 
-          type="text"  placeholder="Expiration Date">
-      
-        <mat-error *ngIf="expirationDateInfo.errors?.required && expirationDateInfo.touched">
-            Expiration Date Missing</mat-error>
-        </mat-form-field>
+        <mat-form-field appearance="outline" fxFlex="calc(30% - 5px)">
+          <mat-label>Expiration Date Month</mat-label>
+        <mat-select  
+        #expirationDateMonthInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.month" name="month" 
+        placeholder="Expiration Date Month"
+       >
+          <mat-option *ngFor="let m of allMonthsInYear" [value]="m.value">
+            {{m.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="expirationDateMonthInfo.errors?.required && expirationDateMonthInfo.touched">
+          Expiration Date Missing</mat-error>
+      </mat-form-field>
 
-        <mat-form-field 
+        <mat-form-field appearance="outline" fxFlex="calc(30% - 5px)">
+          <mat-label>Year</mat-label>
+        <mat-select  
+        #expirationDateMonthInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.year" name="year" 
+        placeholder="Year"
+       >
+          <mat-option *ngFor="let y of getExpirationYears" [value]="y.value">
+            {{y.value}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="expirationDateMonthInfo.errors?.required && expirationDateMonthInfo.touched">
+          Expiration Date Missing</mat-error>
+      </mat-form-field>
+
+    
+        <mat-form-field fxFlex="calc(10% - 5px)"
         appearance="outline">
       <mat-label>CVV</mat-label>
           <input matInput  required 
-          #cvvInfo="ngModel" [(ngModel)]="order.creditCard.cvv" name="cvv" 
+          #cvvInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.cvv" name="cvv" 
           type="text"  placeholder="CVV">
       
         <mat-error *ngIf="cvvInfo.errors?.required && cvvInfo.touched">
             CVV Missing</mat-error>
         </mat-form-field>
       </div>
-    
-      <p>finalPrice: {{order.finalPrice}}</p>
-    
-    
-      <button mat-raised-button
-    [disabled]="formInfo.form.invalid" 
+ 
+      <p fxFlex="calc(100% - 5px)" class="finalPrice-p">total price  {{orderAddOrderReq.finalPrice |  currency}}</p>
+
+   
+ 
+  <div fxLayoutAlign="center" fxFlex="calc(100% - 5px)">
+    <button mat-raised-button fxFlex="calc(50% - 5px)"
+    [disabled]="formInfo.form.invalid" class="order-btn"
     (click)="UserOrder()">
     Order
     </button>
+  </div>
+ 
 </form>

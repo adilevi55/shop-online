@@ -1,7 +1,9 @@
-<button 
+<button mat-stroked-button class="delete-cart-btn"
 (click)="deleteAllCartItems()"
 [disabled]="(shoppingCartItems$|async).length === 0"
->delete all</button>
+>
+<mat-icon>remove_shopping_cart</mat-icon>
+DELETE CART</button>
 
 <div>
     <app-shopping-cart-template class="shopping-cart-template"
@@ -9,9 +11,10 @@
     [orderShoppingCart]="false"
     ></app-shopping-cart-template>  
 </div>
-<div>
-    <span>Total Price: {{cartItemsFinalPrice}}</span>
-    <button mat-raised-button
+<div fxLayout="row wrap" class="order-and-price-div">
+
+    <span fxFlex="60%" class="total-pica-span">Total Price: {{(cartItemsFinalPrice$ | async ) |  currency}}</span>
+    <button mat-button fxFlex="40%" class="order-btn"
     [disabled]="(shoppingCartItems$|async).length === 0"
     routerLink="/order">
     order

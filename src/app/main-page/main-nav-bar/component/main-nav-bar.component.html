@@ -1,0 +1,11 @@
+  <mat-toolbar>
+ 
+    <mat-toolbar-row  class="mat-toolbar">
+      <a routerLink="/home">
+        <img src="../../../../assets/images/logo.png" class="logo-img">
+        </a>
+        <span class="spacer"></span>
+        <span   class="logo">{{user._id? "Hello " + user.firstName + ' ' + user.lastName   :"Hello guest"}}</span>
+    </mat-toolbar-row>
+  
+  </mat-toolbar>

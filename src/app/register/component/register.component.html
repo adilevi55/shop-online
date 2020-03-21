@@ -1,6 +1,6 @@
-<form #formInfo="ngForm">
-    
-    <mat-form-field 
+<form #formInfo="ngForm" fxLayout="row wrap" >
+  <h1 fxFlex="100%" class="register-h1">Create your Shopping Online Account</h1>  
+    <mat-form-field fxFlex="100%"
       appearance="outline">
     <mat-label>Email</mat-label>
         <input matInput  required 
@@ -11,7 +11,7 @@
         Email Missing</mat-error>
       </mat-form-field>
 
-        <mat-form-field 
+        <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
       appearance="outline">
     <mat-label>Password</mat-label>
         <input matInput  required 
@@ -22,7 +22,7 @@
         Password Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="50%" 
       appearance="outline">
     <mat-label>Password Confirm</mat-label>
         <input matInput  required 
@@ -33,7 +33,7 @@
         Password Confirm Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
       appearance="outline">
     <mat-label>First Name</mat-label>
         <input matInput  required 
@@ -44,7 +44,7 @@
         First Name Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="50%"
       appearance="outline">
     <mat-label>Last Name</mat-label>
         <input matInput  required 
@@ -55,7 +55,7 @@
         Last Name Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="100%"
       appearance="outline">
     <mat-label>Phone Number</mat-label>
         <input matInput  required 
@@ -66,7 +66,7 @@
         Phone Number Missing</mat-error>
       </mat-form-field>
    
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" fxFlex="100%">
         <mat-label>City</mat-label>
       <mat-select  
       type="text"  
@@ -81,7 +81,7 @@
         City Missing</mat-error>
     </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
       appearance="outline">
     <mat-label>Street</mat-label>
         <input matInput  required 
@@ -92,7 +92,7 @@
         Street Missing</mat-error>
       </mat-form-field>
 
-      <mat-form-field 
+      <mat-form-field fxFlex="50%" 
       appearance="outline">
     <mat-label>Hous Number</mat-label>
         <input matInput  required min="1"
@@ -103,14 +103,14 @@
         Hous Number Missing</mat-error>
       </mat-form-field>
 
-    <button mat-raised-button
-    [disabled]="formInfo.form.invalid" 
+    <button mat-raised-button fxFlex="100%" 
+    [disabled]="formInfo.form.invalid" class="create-account-btn"
     (click)="register()">
-      Register
+    Create Account
+    </button>
+    <p class="sign-in-p" fxFlex="100%">Already have an account?</p>
+    <button mat-stroked-button class="sign-in-btn" routerLink="/home" fxFlex="100%">
+      Sign in
     </button>
 </form>
 
-<a 
-routerLink="/home">
-    Login
-</a>

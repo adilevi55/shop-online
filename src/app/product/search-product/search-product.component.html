@@ -1,0 +1,14 @@
+<form #formInfo="ngForm" class="form">
+    
+  <mat-form-field fxFlex="85%"
+  appearance="outline" class="search-mat-form-input">
+  <mat-label class="search-mat-form-input" >Search Product</mat-label>
+        <input matInput  required  class="search-mat-form-input"
+        #searchProductInfo="ngModel" [(ngModel)]="searchProduct" name="searchProduct" 
+        type="text"  placeholder="Search Product">
+      </mat-form-field>
+        <button mat-stroked-button fxFlex="15%" class="search-btn"
+    [disabled]="formInfo.form.invalid" (click)=" searchProductFun()">
+    <mat-icon class="search-icon">search</mat-icon>
+    </button>
+</form>

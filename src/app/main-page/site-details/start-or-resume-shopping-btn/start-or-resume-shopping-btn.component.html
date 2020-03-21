@@ -1,0 +1,14 @@
+<button *ngIf="userOpenShoppingCart !== null && userOpenShoppingCart._id !== null 
+;else startShoppingBtn"
+mat-raised-button
+routerLink="/shopping-page">
+   Resume shopping
+</button>
+<ng-template #startShoppingBtn>
+<button mat-raised-button
+(click)="userStartShopping()">
+Start shopping
+</button>
+</ng-template>
+
+

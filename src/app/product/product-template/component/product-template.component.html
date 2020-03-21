@@ -1,0 +1,19 @@
+<div class="spacer"></div>
+<div fxLayout="row wrap" 
+    fxLayoutAlign="center center"
+    class="product-continer"
+    fxLayoutGap="5px"
+>
+<div *ngFor="let p of products" fxFlex="calc(50% - 5px)"
+    class="product-card" fxLayout="row wrap" fxFlexAlign="center">
+    <img src="{{p.img.url}}" class="product-img"
+     fxFlex="100%">
+     <div   fxFlex="100%" fxFlexAlign="center">
+        <button mat-stroked-button (click)="addToCart(p)">ADD TO CART</button>
+    </div>
+     <h2 fxFlex="100%" class="product-card-h">{{p.name}}</h2>
+     <h3 fxFlex="100%"  class="product-card-h">{{p.category.name}}</h3>
+     <p fxFlex="100%" class="product-card-price">{{p.price | currency}}</p>
+    
+</div>
+</div>

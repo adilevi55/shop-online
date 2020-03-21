@@ -1,10 +1,12 @@
+import { User } from './user.interface';
+
 export interface ShoppingCart {
     '_id': string;
     'shoppingCartOpen': boolean;
-    'user': string;
+    'user': User;
     'creationDate': Date;
 }
-export interface ShoppingCartCreat {
+export interface ShoppingCartCreatReq {
     'shoppingCartOpen': boolean;
     'user': string;
     'creationDate': Date;

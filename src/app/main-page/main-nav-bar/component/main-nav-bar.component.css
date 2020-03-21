@@ -1,0 +1,14 @@
+.mat-toolbar{
+    background-color: #fcf8e8;
+}
+.logo{
+    padding: 0 14px;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+.logo-img{
+    padding-top: 10px;
+    height:59px;
+}

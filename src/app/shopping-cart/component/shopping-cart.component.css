@@ -1,0 +1,17 @@
+.order-and-price-div{
+    background-color: #ccc7b9;
+    height: 10vh;
+}
+.delete-cart-btn{
+
+}
+.total-pica-span{
+    align-self: center;
+    color: #ffff;
+}
+.order-btn{
+    background: #03a9f4;
+    font-size: x-large;
+    font-weight: 700;
+    color: #ffff;
+}

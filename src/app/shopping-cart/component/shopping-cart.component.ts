@@ -5,6 +5,8 @@ import { Subscription, Observable } from 'rxjs';
 import { ShoppingCart } from 'src/app/interfaces/shopping-cart.interface';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
 import { ShoppingCartItem } from 'src/app/interfaces/shopping-cart-item.interface';
+import { Router } from '@angular/router';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,34 +19,27 @@ export class ShoppingCartComponent implements OnInit, OnDestroy {
   shoppingCart: ShoppingCart;
   shoppingCartItems: ShoppingCartItem[] = [];
   shoppingCartItems$: Observable<ShoppingCartItem[]>;
-  cartItemsFinalPrice = 0;
+  cartItemsFinalPrice$: Observable<number>;
   constructor(
     private authService: AuthService,
     private shoppingCartService: ShoppingCartService,
-    private shoppingCartItemsService: ShoppingCartItemsService
+    private shoppingCartItemsService: ShoppingCartItemsService,
+    private router: Router,
+    private dialog: DialogService
 
   ) { }
 
   ngOnInit(): void {
   this.userId = this.authService.user._id;
-  if (this.shoppingCartService.shoppingCart === null ||
-      this.shoppingCartService.shoppingCart._id === null) {
-      this.shoppingCartService.creatShoppingCart(this.userId);
-      this.shoppingCart = this.shoppingCartService.shoppingCart;
-    } else {
-      this.shoppingCart = this.shoppingCartService.shoppingCart;
-      this.shoppingCartItemsService.getShoppingCartItems(this.shoppingCart._id);
-    }
-  this.shoppingCartItems$ = this.shoppingCartItemsService.getShoppingCartAsObservable();
-  this.shoppingCartItemsService.getShoppingCartAsObservable().subscribe(cartItems => {
-    cartItems.find(c => {
-      this.cartItemsFinalPrice += c.generalPrice;
-      });
-  });
+  if (this.shoppingCartService.shoppingCart === null || this.shoppingCartService.shoppingCart._id === null) {
+    this.router.navigate(['/home']);
+    this.dialog.openDialog('massage', {massage: 'shopping cart not found'});
   }
-  deleteCartItem(id) {
-    this.shoppingCartItemsService.deleteCartItem(id);
+  this.shoppingCartItems$ = this.shoppingCartItemsService.getShoppingCartItemsAsObservable();
+  this.cartItemsFinalPrice$ = this.shoppingCartItemsService.getShoppingCartTotalPriceAsObservabel();
+
   }
+
   deleteAllCartItems() {
     this.shoppingCartItemsService.deleteAllCartItems( this.shoppingCartService.shoppingCart._id);
   }

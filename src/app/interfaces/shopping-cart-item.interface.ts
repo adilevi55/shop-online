@@ -1,24 +1,22 @@
+import { Product } from './product.interface';
+import { ShoppingCart } from './shopping-cart.interface';
+
 export interface ShoppingCartItem {
     '_id': string;
-    'product': {
-        'name': string,
-        'category': {
-            '_id': string,
-            'name': string
-        },
-        'price': number,
-        'img': {
-            'url': string,
-            'name': string,
-            'imgId': string
-        }
-    };
-    'shoppingCart': string;
+    'product': Product;
+    'shoppingCart': ShoppingCart;
     'generalPrice': number;
     'quantity': number;
  }
 
-export interface CartItemAddToCart {
+export interface CartItemAddToCartReq {
+    'product': string;
+    'shoppingCart': string;
+    'generalPrice': number;
+    'quantity': number;
+ }
+export interface CartItemUpadateReq {
+    '_id': string;
     'product': string;
     'shoppingCart': string;
     'generalPrice': number;

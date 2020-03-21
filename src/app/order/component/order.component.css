@@ -1,0 +1,21 @@
+.div-app-shopping-cart-template{
+    overflow: auto;
+    height: 50vh;
+}
+.spacer{
+    height: 0;
+}
+.finalPrice-order-div{
+    display:flex;
+    justify-content:space-between;
+}
+.finalPrice-p{
+    font-weight: 400;
+    font-size: large;
+}
+.order-btn{
+    background-color: #03a9f4;
+    font-size: large;
+    font-weight: 700;
+    color: #ffff;
+}

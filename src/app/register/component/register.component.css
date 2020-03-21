@@ -1,0 +1,15 @@
+.register-h1{
+    text-align: center;
+}
+.sign-in-btn{
+    color:#03a9f4;
+}
+.create-account-btn{
+    background-color:#007ac1;
+    color:#ffff;
+   
+}
+.sign-in-p{
+    text-align: center;
+    margin-top: 5px;
+}

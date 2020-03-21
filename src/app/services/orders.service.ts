@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Order } from '../interfaces/order.interface';
+import { Order, OrderAddOrderReq } from '../interfaces/order.interface';
 import { ShoppingCartService } from './shopping-cart.service';
 import { DialogService } from './dialog.service';
 
@@ -27,7 +27,7 @@ export class OrdersService {
   getUserLastOrder(userId: string): Observable<Date> {
     return this.http.get<Date>(this.USER_LAST_ORDER + userId);
   }
-  userOrder(order: Order) {
+  userOrder(order: OrderAddOrderReq) {
     this.http.post<Order>(this.USER_ORDER, order).subscribe(() => {
       this.shoppingCartService.userLogOutDeleteShoppingCart();
       this.dialogService.openDialog('orderMassageSuccess');
