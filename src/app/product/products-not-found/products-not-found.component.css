@@ -1,0 +1,19 @@
+.products-not-found{
+    text-align: center;
+}
+.products-not-found-icon{
+    font-size: 610%;
+    font-weight: bold;
+    width: 50%;
+}
+.products-not-found-h1{
+    font-weight: 400;
+    font-size: xx-large;
+}
+.products-not-found-p{
+    color: #666;
+}
+
+.products-not-found-btn{
+    font-size: large;
+}

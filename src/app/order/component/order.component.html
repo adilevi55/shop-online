@@ -1,4 +1,5 @@
 <div class="spacer"></div>
+<h1 class="first-header-h1">Checkout</h1>
 <div class="div-app-shopping-cart-template">
   <app-shopping-cart-template 
   [shoppingCartItems]="shoppingCartItems$|async"
@@ -68,7 +69,7 @@
 
         <mat-form-field appearance="outline" fxFlex="calc(30% - 5px)">
           <mat-label>Expiration Date Month</mat-label>
-        <mat-select  
+        <mat-select  required
         #expirationDateMonthInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.month" name="month" 
         placeholder="Expiration Date Month"
        >
@@ -82,7 +83,7 @@
 
         <mat-form-field appearance="outline" fxFlex="calc(30% - 5px)">
           <mat-label>Year</mat-label>
-        <mat-select  
+        <mat-select  required
         #expirationDateMonthInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.year" name="year" 
         placeholder="Year"
        >

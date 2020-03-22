@@ -9,7 +9,7 @@ import { ProductTemplateComponent } from '../component/product-template.componen
   declarations: [ProductTemplateComponent],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
   ],
   exports: [ProductTemplateComponent]
 })

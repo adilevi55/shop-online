@@ -23,12 +23,6 @@ export class StartOrResumeShoppingBtnComponent implements OnInit, OnDestroy {
     this.unsubscribable = this.httpShoppingCart
     .getShoppingCartAsObservable().subscribe(shoppingCartCreatedDate => {
         this.userOpenShoppingCart = shoppingCartCreatedDate;
-        console.log(this.userOpenShoppingCart !== null);
-        if(this.userOpenShoppingCart !== null){
-          console.log(this.userOpenShoppingCart._id !== null);
-          console.log(this.userOpenShoppingCart);
-          console.log(this.userOpenShoppingCart._id);
-        }
     });
   }
   userStartShopping() {

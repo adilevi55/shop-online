@@ -1,7 +1,5 @@
 .form{
-    border: 1px solid rgba(0,0,0,.12);
-    border-radius: 3px;
-
+  background-color: #ccc7b9;
 }
 .search-mat-form-input{
     border-radius: 0;
@@ -17,9 +15,6 @@
     border: 1px solid rgba(0,0,0,.12);
     border-radius: 0;
     margin-bottom: 32px;
-    margin-top: 5px;}
+    margin-top: 5px;
+}
 
-.mat-form-field-underline{
-}
-.mat-form-field-appearance-legacy{
-}

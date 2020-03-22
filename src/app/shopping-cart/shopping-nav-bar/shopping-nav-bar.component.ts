@@ -11,26 +11,29 @@ import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.s
 export class ShoppingNavBarComponent implements OnInit, OnDestroy {
   numberOfCartItems = 0;
   subscription: Subscription;
-  productMenuPanelOpenState = false;
-  searchPanelOpenState = false;
-  shoppingCartPanelOpenState = false;
-
+  PanelOpenOrCluseArray = [false, false, false];
 
   constructor(
-    private shoppingCartService: ShoppingCartService,
     private shoppingCartItemsService: ShoppingCartItemsService
   ) { }
 
 
   ngOnInit(): void {
-     this.subscription = this.shoppingCartItemsService
-     .getShoppingCartItemsAsObservable().subscribe(cartItems => {
-       this.numberOfCartItems = cartItems.length;
-     });
+    this.subscription = this.shoppingCartItemsService
+      .getShoppingCartItemsAsObservable().subscribe(cartItems => {
+        this.numberOfCartItems = cartItems.length;
+      });
   }
-  PanelOpenOrCluse(PanelNme) {
+  PanelOpenOrCluse(panelOpenOrCluseArrayIndex: number, otherPanelIndex, secondOtherPanelIndex) {
+    if (this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] === false) {
+         this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] = true;
+    } else {
+      this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] = false;
+    }
+    this.PanelOpenOrCluseArray[otherPanelIndex] = false;
+    this.PanelOpenOrCluseArray[secondOtherPanelIndex] = false;
+  }
 
-  }
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();

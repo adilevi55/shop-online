@@ -1,4 +1,10 @@
 <!-- <app-product-nav-bar></app-product-nav-bar>
 <app-search-product></app-search-product> -->
-<app-product-template [products]="products$|async"></app-product-template>
+<div class="spacer"></div>
 
+<app-product-template [products]="products$|async" *ngIf="(products$|async).length > 0;else productsNotFound">
+</app-product-template>
+
+<ng-template #productsNotFound>
+    <app-products-not-found></app-products-not-found>
+</ng-template>

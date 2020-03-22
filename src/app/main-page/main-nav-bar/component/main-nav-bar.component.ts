@@ -20,6 +20,9 @@ export class MainNavBarComponent implements OnInit, OnDestroy {
       this.user = user;
     });
   }
+  logout() {
+    this.authService.logOut();
+  }
   ngOnDestroy(): void {
     if (this.subscription !== undefined) {
       this.subscription.unsubscribe();

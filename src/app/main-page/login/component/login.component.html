@@ -1,7 +1,7 @@
 <div class="form-continer">
 
 
-<form #formInfo="ngForm" class="form" *ngIf="userId === null;else logoutTemplate" fxLayout="column" fxLayoutAlign="center center">
+<form #formInfo="ngForm" class="form" *ngIf="userId === null" fxLayout="column" fxLayoutAlign="center center">
     <h1>Login</h1>
     <mat-form-field 
       appearance="outline">
@@ -29,23 +29,17 @@
     [disabled]="formInfo.form.invalid" (click)="login()">
       Login
     </button>
-    <p class="create-accont-p">Don't have an account?</p>
-    <button mat-raised-button *ngIf="userId === null" routerLink="/register" >
-      Create account
-    </button>
+
 
 </form>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <p class="create-accont-p">Don't have an account?</p>
+  <button mat-raised-button *ngIf="userId === null" routerLink="/register" >
+    Create account
+  </button>
+</div>
 
-
-
-
-<div fxLayout="row wrap" fxLayoutAlign="center">
-  <ng-template #logoutTemplate  fxFlex="100%" >
-    <button class="loginBtn" mat-raised-button color="#67daff" (click)="logout()">
-        Logout
-    </button>
-  </ng-template>
-  
+<div fxLayout="row wrap" fxLayoutAlign="center center">
   <app-start-or-resume-shopping-btn fxFlex="100%"
   *ngIf="userId !== null"
   [userId]=userId>

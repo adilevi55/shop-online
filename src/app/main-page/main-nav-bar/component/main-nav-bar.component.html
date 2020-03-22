@@ -6,6 +6,15 @@
         </a>
         <span class="spacer"></span>
         <span   class="logo">{{user._id? "Hello " + user.firstName + ' ' + user.lastName   :"Hello guest"}}</span>
+        <mat-icon class="user-menu-icon" [matMenuTriggerFor]="menu">person</mat-icon>
+
+
+<mat-menu #menu="matMenu">
+  <button *ngIf="user._id" mat-menu-item color="#67daff" (click)="logout()">
+    Logout
+</button>
+
+</mat-menu>
     </mat-toolbar-row>
   
   </mat-toolbar>
