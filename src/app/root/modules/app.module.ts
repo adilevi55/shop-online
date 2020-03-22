@@ -14,6 +14,7 @@ import { MainNavBarModule } from 'src/app/main-page/main-nav-bar/module/main-nav
 import { ShearModule } from './shear.module';
 import { LoginModule } from 'src/app/main-page/login/module/login.module';
 import { SiteDetailsModule } from 'src/app/main-page/site-details/module/site-details.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SiteDetailsModule } from 'src/app/main-page/site-details/module/site-de
     ShearModule,
     LoginModule,
     SiteDetailsModule,
-    RouterModule
+    RouterModule,
+    FontAwesomeModule
 
   ],
   entryComponents: [entryComponents],

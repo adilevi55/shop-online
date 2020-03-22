@@ -5,15 +5,15 @@
      <!-- (click)="productMenuPanelOpenState = productMenuPanelOpenState?
             false:
             true"  -->
-            <mat-icon 
-            (click)="PanelOpenOrCluse(0,1,2)" 
+            <mat-icon mat-button
+            (click)="userOpenProductNavBarPanelDialog()" 
        
             >menu</mat-icon>
             <mat-icon 
-            (click)="PanelOpenOrCluse(1,0,2)" 
+            (click)="PanelOpenOrCluse(0,1)" 
            >search</mat-icon>         
             <mat-icon 
-            (click)="PanelOpenOrCluse(2,0,1)" 
+            (click)="PanelOpenOrCluse(1,0)" 
             matBadge="{{numberOfCartItems}}"
             >shopping_cart</mat-icon>          
       <div class="massage-to-user">
@@ -24,16 +24,13 @@
 
     </mat-toolbar-row>
     <mat-toolbar-row>
-        <app-product-nav-bar class="toolbar-second-row-components"
-        *ngIf="PanelOpenOrCluseArray[0]"
-        ></app-product-nav-bar>
-
+  
         <app-search-product class="toolbar-second-row-components"
-        *ngIf="PanelOpenOrCluseArray[1]"
+        *ngIf="PanelOpenOrCluseArray[0]"
         ></app-search-product>
 
         <app-shopping-cart class="toolbar-second-row-components"
-        *ngIf="PanelOpenOrCluseArray[2]"
+        *ngIf="PanelOpenOrCluseArray[1]"
         ></app-shopping-cart>
     </mat-toolbar-row>
    </mat-toolbar>

@@ -1,0 +1,18 @@
+.continer{
+    position: relative;
+}
+.close-dialog-icon{
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    border: 2px #ccc7b9 solid;
+    border-radius: 50%;
+    color: #75726a;
+}
+.btn-margin-bottom{
+    margin-bottom: 5px;
+}
+.menu-h1{
+    color: #666;
+    text-align: center;
+}

@@ -11,7 +11,6 @@ import { ProductTemplateModule } from 'src/app/product/product-template/module/p
 @NgModule({
   declarations: [
     ShoppingCartTemplateComponent,
-    ProductNavBarComponent,
     SearchProductComponent
   ],
   imports: [
@@ -26,7 +25,6 @@ import { ProductTemplateModule } from 'src/app/product/product-template/module/p
     AngularMaterialModule,
     ProductTemplateModule,
     ShoppingCartTemplateComponent,
-    ProductNavBarComponent,
     SearchProductComponent
   ]
 })

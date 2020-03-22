@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DialogProductComponent } from '../dialog/dialog-product/dialog-product.component';
 import { DialogMassageComponent } from '../dialog/dialog-massage/dialog-massage.component';
 import { DialogOrderSuccessComponent } from '../dialog/dialog-order-success/dialog-order-success.component';
+import { DialogProductNavBarComponent } from '../dialog/dialog-product-nav-bar/dialog-product-nav-bar.component';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,8 @@ export class DialogService {
     const DIALOGS = {
       product: DialogProductComponent,
       massage: DialogMassageComponent,
-      orderMassageSuccess: DialogOrderSuccessComponent
+      orderMassageSuccess: DialogOrderSuccessComponent,
+      productNavBar: DialogProductNavBarComponent
     };
     return DIALOGS[dialogName];
   }

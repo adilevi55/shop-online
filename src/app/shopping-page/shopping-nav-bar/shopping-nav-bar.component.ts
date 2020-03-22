@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
-import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Subscription } from 'rxjs';
 import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.service';
+import { DialogService } from 'src/app/services/dialog.service';
 
 @Component({
   selector: 'app-shopping-nav-bar',
@@ -11,10 +11,11 @@ import { ShoppingCartItemsService } from 'src/app/services/shopping-cart-items.s
 export class ShoppingNavBarComponent implements OnInit, OnDestroy {
   numberOfCartItems = 0;
   subscription: Subscription;
-  PanelOpenOrCluseArray = [false, false, false];
+  PanelOpenOrCluseArray = [false, false];
 
   constructor(
-    private shoppingCartItemsService: ShoppingCartItemsService
+    private shoppingCartItemsService: ShoppingCartItemsService,
+    private dialogService: DialogService
   ) { }
 
 
@@ -24,14 +25,16 @@ export class ShoppingNavBarComponent implements OnInit, OnDestroy {
         this.numberOfCartItems = cartItems.length;
       });
   }
-  PanelOpenOrCluse(panelOpenOrCluseArrayIndex: number, otherPanelIndex, secondOtherPanelIndex) {
+  PanelOpenOrCluse(panelOpenOrCluseArrayIndex: number, otherPanelIndex) {
     if (this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] === false) {
          this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] = true;
     } else {
       this.PanelOpenOrCluseArray[panelOpenOrCluseArrayIndex] = false;
     }
     this.PanelOpenOrCluseArray[otherPanelIndex] = false;
-    this.PanelOpenOrCluseArray[secondOtherPanelIndex] = false;
+  }
+  userOpenProductNavBarPanelDialog() {
+    this.dialogService.openDialog('productNavBar');
   }
 
   ngOnDestroy(): void {

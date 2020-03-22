@@ -1,0 +1,15 @@
+<div class="continer" fxLayout="row wrap" fxLayoutGap="5px">
+    <h1 class="menu-h1">Products Categories</h1>
+    <button fxFlex="100%" mat-raised-button (click)="getAllProducts()" class="btn-margin-bottom">
+        <fa-icon [icon]="faShoppingBasket"></fa-icon>
+
+        All Products
+    </button>
+    <button *ngFor="let c of categories; index as i" fxFlex="calc(50% - 5px)" mat-raised-button
+        (click)="getProductCategory(c._id)" class="btn-margin-bottom">
+        <fa-icon [icon]="iconsArray[i].icon"></fa-icon>
+        {{c.name}}
+    </button>
+    <mat-icon (click)="userExitDialog()" class="close-dialog-icon">close</mat-icon>
+
+</div>

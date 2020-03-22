@@ -3,9 +3,10 @@
 }
 .search-mat-form-input{
     border-radius: 0;
+      background-color: #ccc7b9;
+
 }
 .search-icon{
-    color:#67daff;
     font-size: x-large;
     font-weight: 700;
 }
