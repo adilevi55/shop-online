@@ -1,14 +1,17 @@
-<div *ngIf="product" class="product-card"
+<div *ngIf="product" class="product-card" 
 fxLayout="row wrap" fxFlexAlign="center">
 <img src="{{product.img.url}}" class="product-img"
-fxFlex="100%">
+fxFlex="100%" 
+fxFlex.sm="50%" fxFlexAlign.sm="center"
+>
     <h2 fxFlex="100%" class="product-card-h">{{product.name}}</h2>
     <h3 fxFlex="100%"  class="product-card-h">{{product.category.name}}</h3>
     <p fxFlex="100%" class="product-card-price">{{product.price | currency}}</p>
-    
-    <form #formInfo="ngForm">
-    
-        <mat-form-field 
+
+    <form #formInfo="ngForm" fxFlex="100%" class="form"
+    fxLayout="row wrap" fxFlexAlign="center">
+ 
+        <mat-form-field fxFlex="100%"
           appearance="outline">
         <mat-label>Quantity</mat-label>
             <input matInput  required min="1"
@@ -18,8 +21,8 @@ fxFlex="100%">
           <mat-error *ngIf="quantityInfo.errors?.required && quantityInfo.touched">
             Quantity Missing</mat-error>
           </mat-form-field>
-    
-        <button mat-stroked-button class="add-to-cart-btn"
+
+        <button mat-stroked-button class="add-to-cart-btn" fxFlex="100%"
         [disabled]="formInfo.form.invalid" (click)="addToCart()">
         Add To Cart
         </button>

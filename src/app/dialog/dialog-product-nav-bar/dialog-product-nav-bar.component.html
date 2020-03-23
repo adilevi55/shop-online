@@ -5,7 +5,11 @@
 
         All Products
     </button>
-    <button *ngFor="let c of categories; index as i" fxFlex="calc(50% - 5px)" mat-raised-button
+    <button *ngFor="let c of categories; index as i" 
+    fxFlex="100%" 
+    fxFlex.sm="calc(50% - 5px)"
+    fxFlex.md="calc(50% - 5px)"
+    mat-raised-button
         (click)="getProductCategory(c._id)" class="btn-margin-bottom">
         <fa-icon [icon]="iconsArray[i].icon"></fa-icon>
         {{c.name}}

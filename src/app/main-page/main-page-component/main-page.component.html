@@ -1,3 +1,19 @@
-<app-about></app-about>
-<app-login></app-login>
-<app-site-details></app-site-details>
+<div fxShow.sm
+fxLayout.gt-sm="row wrap" fxFlexAlign.md="center center">
+
+<app-about
+    fxFlex.sm="50%"
+    fxFlex.gt-sm="33.3%"
+    fxFlexOrder.gt-sm="2"
+    ></app-about>
+<app-login 
+    fxFlex.sm="50%" 
+    fxFlex.gt-sm="33.3%"
+    fxFlexOrder.gt-sm="1"
+    ></app-login>
+<app-site-details
+    fxFlex.sm="100%"
+    fxFlex.gt-sm="33.3%"
+    fxFlexOrder.gt-sm="3"
+    > </app-site-details>
+</div>

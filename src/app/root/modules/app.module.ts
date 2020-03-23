@@ -15,6 +15,7 @@ import { ShearModule } from './shear.module';
 import { LoginModule } from 'src/app/main-page/login/module/login.module';
 import { SiteDetailsModule } from 'src/app/main-page/site-details/module/site-details.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     LoginModule,
     SiteDetailsModule,
     RouterModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FlexLayoutModule.withConfig({addOrientationBps: true}),
+
 
   ],
   entryComponents: [entryComponents],

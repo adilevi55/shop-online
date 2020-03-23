@@ -19,4 +19,22 @@
 }
 
 .shopping-cart-component{
+    width: 50%;
+    height: 50vh;
+    overflow: auto;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 1919px) {
+ 
+    .toolbar-second-row-components{
+        width: 50%;
+    }
+
+}
+@media only screen and (min-width: 1420px)  {
+ 
+    .toolbar-second-row-components{
+        width: 40%;
+    }
+
 }

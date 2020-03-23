@@ -1,29 +1,50 @@
-<div *ngIf="shoppingCartItems.length > 0" class="cart-container" fxLayout="row wrap">
-    <!-- fxLayoutGap="10px" -->
+<div *ngIf="shoppingCartItems.length > 0" 
+    class="cart-container" fxLayout="row wrap"
+    [ngClass]="{'cart-container-order-component': orderShoppingCart}"
+    >
 
-    <div *ngFor="let i of shoppingCartItems" fxFlex="100%">
+    <div *ngFor="let i of shoppingCartItems" 
+    [ngClass]="{'cart-for-loop-order-component-div': orderShoppingCart}"
+    >
+
+    <div *ngIf="orderShoppingCart" 
+    fxLayout="row wrap" fxLayoutAlign="center">
+    <img class="cart-item-img" src="{{i.product.img.url}}" fxFlex="100%">
+    <h2 fxFlex="100%">{{i.product.name}}</h2>
+    <h3 fxFlex="100%">{{i.product.category.name}}</h3>
+    <p  fxFlex="100%">{{i.generalPrice | currency}}</p>
+
+    </div>
+
+    <div *ngIf="!orderShoppingCart">
         <h2>{{i.product.category.name}}</h2>
         <div fxLayout="row">
 
             <img class="cart-item-img" src="{{i.product.img.url}}" fxFlex="30%">
+            
             <div fxFlex="70%" fxLayout="row wrap" fxFlexAlign="center center">
            
-                <div fxFlex="80%" fxLayout="row wrap" fxFlexAlign="center center">
+                     
+                 <div *ngIf="!orderShoppingCart"
+                 fxFlex="80%" fxLayout="row wrap" 
+                 fxFlexAlign="center center">
+
                     <div fxFlex="100%">
                         <h3 class="product-name-h3">{{i.product.name}}</h3>
                     </div>
                
-                    <form #formInfo="ngForm" class="form" *ngIf="!orderShoppingCart"
+                    <form #formInfo="ngForm" class="form"
                         (change)="userChangeCartItemQuantity(i)" fxFlex="100%" fxFlexAlign="center center">
-                        <button [disabled]="i.quantity === 1" class="remove-one-quantitiy-btn">
+                        <button [disabled]="i.quantity === 1" 
+                        class="remove-one-quantitiy-btn" fxFlex.md="20%">
                             <mat-icon (click)="userRemoveOneQuantity(i)"  >remove_circle_outline</mat-icon>
                         </button>
-                        <div class="div-input-quantity" fxFlex="40%" fxFlexAlign="center center">
+                        <div class="div-input-quantity" fxFlex="50%" fxFlex.sm="45%" fxFlex.md="30%" fxFlexAlign="center center">
                             <label class="qty-label">Qty </label>
                             <input  class="quantity-mat-form-input" min="1" #quantityInfo="ngModel" 
                                 [(ngModel)]="i.quantity" name="quantity" type="number" class="input-quantity">
                             </div>
-                        <button class="remove-one-quantitiy-btn">
+                        <button class="remove-one-quantitiy-btn" fxFlex.md="20%">
                             <mat-icon type="button" (click)="userAddOneQuantity(i)">add_circle_outline</mat-icon>
                         </button>
                     </form>
@@ -43,4 +64,6 @@
 
 
     </div>
+</div>
+
 </div>

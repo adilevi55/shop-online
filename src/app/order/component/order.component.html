@@ -1,6 +1,7 @@
 <div class="spacer"></div>
 <h1 class="first-header-h1">Checkout</h1>
-<div class="div-app-shopping-cart-template">
+<div fxLayout.md="row">
+<div class="div-app-shopping-cart-template" fxFlex.gt-sm="50%">
   <app-shopping-cart-template 
   [shoppingCartItems]="shoppingCartItems$|async"
   [orderShoppingCart]="true"
@@ -10,9 +11,11 @@
 
 
 
- <form #formInfo="ngForm" fxLayout="row wrap" fxLayoutGap="5px">
+ <form #formInfo="ngForm" fxFlex.gt-sm="50%" fxLayout="row wrap" 
+ fxLayoutGap="5px" fxLayoutAlign="center center">
     
-    <mat-form-field fxFlex="calc(60% - 5px)"
+    <mat-form-field 
+    fxFlex="calc(60% - 5px)"
     appearance="outline">
         <mat-label>Choose a Shpping Date</mat-label>
         <input matInput [matDatepicker]="picker"
@@ -121,3 +124,4 @@
   </div>
  
 </form>
+</div>

@@ -13,7 +13,8 @@ export class DialogService {
   openDialog(dialogName: string, payload?): void {
     const dialogOption = this.dialogOptions(dialogName);
     this.matDialog.open(dialogOption, {
-      width: '33rem',
+      width: '50%',
+      height: '60vh',
       data: { payload }
     });
   }

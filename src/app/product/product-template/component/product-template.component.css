@@ -4,8 +4,8 @@
 
 }
 .product-img{
-    height: 120px;
-
+    height: 20vh;
+    object-fit: contain;
 }
 .product-card-h {
     margin-bottom:0;
@@ -16,4 +16,12 @@
     color:#67daff;
     font-weight: 700;
     font-size: 105%;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+    .product-img{
+        height: 30vh;
+    }
+
+
 }

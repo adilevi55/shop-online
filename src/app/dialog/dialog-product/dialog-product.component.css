@@ -1,13 +1,15 @@
+.product-card {
+    text-align: center;
+    position: relative;
+    width:100%;
+    }
 .add-to-cart-btn{
     background: #03a9f4;
     font-size: x-large;
     font-weight: 700;
     color: #ffff;
 }
-.product-card {
-    text-align: center;
-    position: relative;
-    }
+
     .product-card-h {
         margin-bottom:0;
         color: #666;
@@ -26,5 +28,20 @@
     border: 2px #ccc7b9 solid;
     border-radius: 50%;
     color: #75726a;
+}
+.product-img{
+    height: 20vh;
+    object-fit: contain;
+}
+
+@media only screen and (min-width: 600px) and (max-width: 959px) {
+    .product-img{
+        margin: 0 25%;  
+    }
+    .form{
+        /* margin: 0 25%;   */
+    }
+
+
 }
 

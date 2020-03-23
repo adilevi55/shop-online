@@ -2,9 +2,14 @@
     fxLayoutAlign="center center"
     fxLayoutGap="5px"
 >
-<div *ngFor="let p of products" fxFlex="calc(50% - 5px)"
+<div *ngFor="let p of products" 
+fxFlex="calc(50% - 5px)"
+fxFlex.sm="calc(33.3% - 5px)"
+fxFlex.md="calc(33.3% - 5px)"
+fxFlex.lg="calc(20% - 5px)"
+fxFlex.xl="calc(20% - 5px)"
+class="product-card" fxLayout="row wrap" fxFlexAlign="center">
 
-    class="product-card" fxLayout="row wrap" fxFlexAlign="center">
     <img src="{{p.img.url}}" class="product-img"
      fxFlex="100%">
      <div   fxFlex="100%" fxFlexAlign="center">

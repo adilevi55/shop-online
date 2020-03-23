@@ -1,51 +1,46 @@
+<div fxShow.sm class="spacer"></div>
 <div class="form-continer">
 
 
-<form #formInfo="ngForm" class="form" *ngIf="userId === null" fxLayout="column" fxLayoutAlign="center center">
+  <form #formInfo="ngForm" class="form" *ngIf="userId === null"
+   fxLayout="column" fxLayoutAlign="center center">
     <h1>Login</h1>
-    <mat-form-field 
-      appearance="outline">
-    <mat-label>Email</mat-label>
-        <input matInput  required 
-        #emailInfo="ngModel" [(ngModel)]="user.email" name="email" 
-        type="text"  placeholder="Email">
-    
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput required #emailInfo="ngModel" [(ngModel)]="user.email" name="email" type="text"
+        placeholder="Email">
+
       <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
         Email Missing</mat-error>
-      </mat-form-field>
+    </mat-form-field>
 
-        <mat-form-field 
-      appearance="outline">
-    <mat-label>Password</mat-label>
-        <input matInput  required 
-        #passwordInfo="ngModel" [(ngModel)]="user.password" name="password" 
-        type="text"  placeholder="Email">
-    
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput required #passwordInfo="ngModel" [(ngModel)]="user.password" name="password" type="text"
+        placeholder="Email">
+
       <mat-error *ngIf="passwordInfo.errors?.required && passwordInfo.touched">
         Password Missing</mat-error>
-      </mat-form-field>
+    </mat-form-field>
 
-    <button mat-raised-button  class="loginBtn"
-    [disabled]="formInfo.form.invalid" (click)="login()">
+    <button mat-raised-button class="loginBtn" [disabled]="formInfo.form.invalid" (click)="login()">
       Login
     </button>
 
 
-</form>
-<div fxLayout="column" fxLayoutAlign="center center">
-  <p class="create-accont-p">Don't have an account?</p>
-  <button mat-raised-button *ngIf="userId === null" routerLink="/register" >
-    Create account
-  </button>
-</div>
+  </form>
+  <div class="padding-bottom" *ngIf="userId === null" fxLayout="column" fxLayoutAlign="center center">
+    <p class="create-accont-p">Don't have an account?</p>
+    <button mat-raised-button  routerLink="/register">
+      Create account
+    </button>
+  </div>
 
-<div fxLayout="row wrap" fxLayoutAlign="center center">
-  <app-start-or-resume-shopping-btn fxFlex="100%"
-  *ngIf="userId !== null"
-  [userId]=userId>
-</app-start-or-resume-shopping-btn>
+  <div class="padding-bottom" fxLayout="row wrap" fxLayoutAlign="center center">
+    <app-start-or-resume-shopping-btn fxFlex="100%" *ngIf="userId !== null" [userId]=userId>
+    </app-start-or-resume-shopping-btn>
 
-   
+
 
 
   </div>

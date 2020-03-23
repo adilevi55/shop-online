@@ -1,6 +1,6 @@
 
-.form{
- 
+.spacer{
+ margin-top: 15px;
 }
 .form-continer{
     background-color: rgb(250,250,250);
@@ -14,7 +14,7 @@
     justify-content: space-around;
 }
 
-.user-logged-in-div{
-
+.padding-bottom{
+    padding-bottom: 30px;
 }
 
