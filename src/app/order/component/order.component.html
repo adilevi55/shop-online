@@ -35,10 +35,16 @@
     <mat-label>Shpping Street</mat-label>
         <input matInput  required 
         #shppingStreetInfo="ngModel" [(ngModel)]="orderAddOrderReq.shppingStreet" name="shppingStreet" 
-        type="text"  placeholder="Street">
+        type="text"  placeholder="Street" pattern="[a-z]{3,20}">
     
       <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
         Shpping Street Missing</mat-error>
+      <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
+        Shpping Street Missing</mat-error>
+        <mat-error *ngIf="shppingStreetInfo.errors?.pattern && shppingStreetInfo.touched">
+          Shpping Street must be between 3 and 10 letters
+          and contain no numbers, spaces and symbols
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" fxFlex="calc(100% - 5px)">
@@ -64,16 +70,23 @@
       <mat-label>Card Number</mat-label>
           <input matInput  required 
           #cardNumberInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.cardNumber" name="cardNumber" 
-          type="text"  placeholder="Card Number">
+          type="text"  placeholder="Card Number" pattern="[0-9]{13,19}">
       
         <mat-error *ngIf="cardNumberInfo.errors?.required && cardNumberInfo.touched">
             Card Number Missing</mat-error>
+      
+        <mat-error *ngIf="cardNumberInfo.errors?.pattern && cardNumberInfo.touched">
+          You have entered and invalid card number.
+          card number must be between 13 and 19 numbers.
+          Please try again
+        </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="outline" fxFlex="calc(30% - 5px)">
           <mat-label>Expiration Date Month</mat-label>
         <mat-select  required
-        #expirationDateMonthInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.month" name="month" 
+        #expirationDateMonthInfo="ngModel"
+        [(ngModel)]="orderAddOrderReq.creditCard.expirationDate.month" name="month" 
         placeholder="Expiration Date Month"
        >
           <mat-option *ngFor="let m of allMonthsInYear" [value]="m.value">
@@ -102,12 +115,16 @@
         <mat-form-field fxFlex="calc(10% - 5px)"
         appearance="outline">
       <mat-label>CVV</mat-label>
-          <input matInput  required 
+          <input matInput  required pattern="[0-9]{3}" maxlength="3"
           #cvvInfo="ngModel" [(ngModel)]="orderAddOrderReq.creditCard.cvv" name="cvv" 
           type="text"  placeholder="CVV">
       
         <mat-error *ngIf="cvvInfo.errors?.required && cvvInfo.touched">
             CVV Missing</mat-error>
+            <mat-error *ngIf="cvvInfo.errors?.pattern && cvvInfo.touched">
+              CVV must contain 3 characters.
+              Please try again
+            </mat-error>
         </mat-form-field>
       </div>
  

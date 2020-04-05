@@ -4,12 +4,16 @@ fxFlexAlign="center center" >
     <mat-form-field fxFlex="100%"
       appearance="outline">
     <mat-label>Email</mat-label>
-        <input matInput  required 
+        <input matInput  required email 
         #emailInfo="ngModel" [(ngModel)]="user.email" name="email" 
         type="email"  placeholder="Email">
     
       <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
-        Email Missing</mat-error>
+        Email Missing
+      </mat-error>
+      <mat-error *ngIf="emailInfo.errors?.email && emailInfo.touched">
+        You have entered and invalid e-mail address. Please try again
+       </mat-error>
       </mat-form-field>
 
         <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
@@ -37,34 +41,44 @@ fxFlexAlign="center center" >
       <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
       appearance="outline">
     <mat-label>First Name</mat-label>
-        <input matInput  required 
+        <input matInput  required pattern="[a-z]{3,10}"
         #firstNameInfo="ngModel" [(ngModel)]="user.firstName" name="firstName" 
         type="text"  placeholder="First Name">
     
       <mat-error *ngIf="firstNameInfo.errors?.required && firstNameInfo.touched">
         First Name Missing</mat-error>
+      <mat-error *ngIf="firstNameInfo.errors?.pattern && firstNameInfo.touched">
+        First Name must be between 3 and 10 letters
+        and contain no numbers, spaces and symbols
+      </mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="50%"
       appearance="outline">
     <mat-label>Last Name</mat-label>
-        <input matInput  required 
+        <input matInput  required pattern="[a-z]{3,10}"
         #lastNameInfo="ngModel" [(ngModel)]="user.lastName" name="lastName" 
         type="text"  placeholder="Last Name">
     
       <mat-error *ngIf="lastNameInfo.errors?.required && lastNameInfo.touched">
         Last Name Missing</mat-error>
+        <mat-error *ngIf="lastNameInfo.errors?.pattern && lastNameInfo.touched">
+          Last Name must be between 3 and 10 letters
+          and contain no numbers, spaces and symbols
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="100%"
       appearance="outline">
     <mat-label>Phone Number</mat-label>
-        <input matInput  required 
+        <input matInput  required pattern="[0-9]{10}"
         #phoneInfo="ngModel" [(ngModel)]="user.phone" name="phone" 
         type="tel"  placeholder="Phone Number">
     
       <mat-error *ngIf="phoneInfo.errors?.required && phoneInfo.touched">
         Phone Number Missing</mat-error>
+        <mat-error *ngIf="phoneInfo.errors?.pattern && phoneInfo.touched">
+          Phone Number must be 10 numbers</mat-error>
       </mat-form-field>
    
       <mat-form-field appearance="outline" fxFlex="100%">
@@ -85,12 +99,16 @@ fxFlexAlign="center center" >
       <mat-form-field fxFlex="calc(50% - 5px)" style="margin-right: 5px;"
       appearance="outline">
     <mat-label>Street</mat-label>
-        <input matInput  required 
+        <input matInput  required pattern="[a-z]{3,20}"
         #streetInfo="ngModel" [(ngModel)]="user.street" name="street" 
         type="text"  placeholder="Street">
     
       <mat-error *ngIf="streetInfo.errors?.required && streetInfo.touched">
         Street Missing</mat-error>
+        <mat-error *ngIf="streetInfo.errors?.pattern && streetInfo.touched">
+          Street must be between 3 and 10 letters
+          and contain no numbers, spaces and symbols
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field fxFlex="50%" 

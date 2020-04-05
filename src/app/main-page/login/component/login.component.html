@@ -7,21 +7,28 @@
     <h1>Login</h1>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput required #emailInfo="ngModel" [(ngModel)]="user.email" name="email" type="text"
+      <input matInput required #emailInfo="ngModel" email [(ngModel)]="user.email" name="email" type="text"
         placeholder="Email">
 
       <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">
         Email Missing</mat-error>
+      <mat-error *ngIf="emailInfo.errors?.email && emailInfo.touched">
+        You have entered and invalid e-mail address. Please try again
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput required #passwordInfo="ngModel" [(ngModel)]="user.password" name="password" type="text"
-        placeholder="Email">
+      <mat-label>Password</mat-label> 
+      <input matInput required #passwordInfo="ngModel" 
+      minlength="6" maxlength="15"
+      [(ngModel)]="user.password" name="password" type="password"
+        placeholder="Password">
 
       <mat-error *ngIf="passwordInfo.errors?.required && passwordInfo.touched">
         Password Missing</mat-error>
-    </mat-form-field>
+      <mat-error *ngIf="passwordInfo.errors?.minlength && passwordInfo.touched">
+        Password must be a minimum of 6 characters</mat-error>
+     </mat-form-field>
 
     <button mat-raised-button class="loginBtn" [disabled]="formInfo.form.invalid" (click)="login()">
       Login
