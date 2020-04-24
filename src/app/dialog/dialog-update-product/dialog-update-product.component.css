@@ -1,0 +1,15 @@
+form{
+	position: relative;
+}
+.image{
+	height: 20vh;
+    object-fit: contain;
+}
+.close-dialog-icon{
+    position: absolute;
+    top: -21px;
+    right: -21px;
+    border: 2px #ccc7b9 solid;
+    border-radius: 50%;
+    color: #75726a;
+}

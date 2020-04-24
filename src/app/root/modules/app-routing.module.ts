@@ -8,6 +8,8 @@ const routes: Routes = [
   {path: 'home', component: MainPageComponent},
   {path: 'register', loadChildren: () => import('../../register/module/register.module')
   .then(m => m.RegisterModule)},
+  {path: 'admin', loadChildren: () => import('../../admin/module/admin.module')
+  .then(m => m.AdminModule)},
   {path: 'shopping-page', loadChildren: () => import('../../shopping-page/module/shopping-page.module')
   .then(m => m.ShoppingPageModule), canActivate: [AuthGuard]},
   {path: 'order', loadChildren: () => import('../../order/module/order.module')

@@ -10,12 +10,14 @@ import { Router } from '@angular/router';
 })
 export class ProductTemplateComponent {
   @Input() products: Product[];
+  @Input() adminAuth: boolean;
   constructor(
     private dialogService: DialogService,
-    private router: Router
   ) { }
   addToCart(product) {
     this.dialogService.openDialog('product', product);
   }
-
+  adminUpdateProduct(product) {
+    this.dialogService.openDialog('updateProduct', product);
+  }
 }

@@ -13,7 +13,8 @@ class="product-card" fxLayout="row wrap" fxFlexAlign="center">
     <img src="{{p.img.url}}" class="product-img"
      fxFlex="100%">
      <div   fxFlex="100%" fxFlexAlign="center">
-        <button mat-stroked-button (click)="addToCart(p)">ADD TO CART</button>
+        <button *ngIf="!adminAuth" mat-stroked-button (click)="addToCart(p)">ADD TO CART</button>
+        <button *ngIf="adminAuth" mat-stroked-button (click)="adminUpdateProduct(p)">Update</button>
     </div>
      <h2 fxFlex="100%" class="product-card-h">{{p.name}}</h2>
      <h3 fxFlex="100%"  class="product-card-h">{{p.category.name}}</h3>

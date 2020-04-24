@@ -70,7 +70,6 @@ export class ShoppingCartItemsService {
     this.http.put<ShoppingCartItem>(this.UPDATE_QUANTITY + cartItem._id, cartItem).subscribe(newCartItem => {
 
       //bad logic
-      console.log(newCartItem);
       this.shoppingCartItems.forEach((c,index) => {
         
         if (c._id === cartItem._id) {

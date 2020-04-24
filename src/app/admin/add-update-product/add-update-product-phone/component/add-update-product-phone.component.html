@@ -1,0 +1,14 @@
+<p>add-update-prodcut-phone works!</p>
+<mat-icon mat-button
+(click)="userOpenProductNavBarPanelDialog()" 
+>menu</mat-icon>
+<app-search-product></app-search-product>
+<app-product-template [products]="products$|async" 
+[adminAuth]="true"
+*ngIf="(products$|async).length > 0;else productsNotFound"
+>
+</app-product-template>
+<ng-template #productsNotFound>
+    <app-products-not-found></app-products-not-found>
+</ng-template>
+

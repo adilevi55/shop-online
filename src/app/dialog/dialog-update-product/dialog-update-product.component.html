@@ -1,0 +1,45 @@
+<form #formInfo="ngForm" fxLayout="row warp" fxLayoutAlign="center center"> 
+
+	<mat-form-field fxFlex="100%"
+	appearance="outline">
+  <mat-label>Name</mat-label>
+	  <input matInput   
+	  #nameInfo="ngModel" [(ngModel)]="product.name" name="name" 
+	  type="text"  placeholder="Name" minlength="3" maxlength="20">
+	</mat-form-field>
+
+
+	<mat-form-field appearance="outline" fxFlex="100%">
+        <mat-label>Category</mat-label>
+      <mat-select  
+      type="text"  
+     [(ngModel)]="product.category" required
+     #categoryInfo="ngModel"  name="category"
+     >
+        <mat-option *ngFor="let c of categories" [value]="c._id">
+          {{c.name}}
+        </mat-option>
+	  </mat-select>
+	</mat-form-field>
+	  
+	  <mat-form-field fxFlex="100%"
+	  appearance="outline">
+	<mat-label>Price</mat-label>
+		<input matInput   
+		#nameInfo="ngModel" [(ngModel)]="product.price" name="price" 
+		type="number"  placeholder="Price" min="1">
+	  </mat-form-field>
+	  <div>
+        <img class="image"  *ngIf="!imgURL" src="{{product.img.url}}" width="100%">   
+        <img class="image" *ngIf="imgURL" [src]="imgURL" width="100%">  
+      </div>
+
+	<input  type="file" (change)="onFileSelected($event)"
+ngModel name="img" #imgInput style="display: none;">
+<button (click)="imgInput.click()"  mat-raised-button color="warn">
+  Update image
+</button>  
+<button (click)="updateProduct()">Update product</button>
+<mat-icon (click)="userExitDialog()" class="close-dialog-icon">close</mat-icon>
+
+</form>

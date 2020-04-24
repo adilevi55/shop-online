@@ -58,7 +58,7 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.cartItems.find(c => {
       this.orderAddOrderReq.finalPrice += c.generalPrice;
     });
-    this.cityService.getCities().subscribe(cities => {
+    this.subscription = this.cityService.getCities().subscribe(cities => {
       this.cities = cities;
     });
     this.orderAddOrderReq.shoppingCart = this.cartItems[0].shoppingCart._id;

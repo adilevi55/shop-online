@@ -4,13 +4,13 @@ import { UserLogin, User, UserRegister } from 'src/app/interfaces/user.interface
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { ShoppingCartService } from '../shopping-cart.service';
-import { DialogService } from '../dialog.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   isAuth = false;
+  isAuthAdimn = false;
   BASE_URL = 'https://shop-online-server.herokuapp.com/api/authentication/';
   LOGIN = this.BASE_URL + 'login';
   REGISTER = this.BASE_URL + 'register';
@@ -71,6 +71,14 @@ export class AuthService {
     this.router.navigate(['/home']);
 
   }
-
+adminLogin(){
+  this.isAuthAdimn = true;
+}
+adminLogout(){
+  this.isAuthAdimn = false;
+}
+getIsAuthAdmin(): boolean {
+  return this.isAuthAdimn;
+}
 
 }
