@@ -9,6 +9,9 @@ const routes: Routes = [
   {path:'', component:AdminLoginComponent},
   {path:'dashboard',
   component:AdminDashboardComponent, canActivate: [AuthGuardAdmin],children: [
+    {path: '', 
+    loadChildren: () => import('../admin-dashboard/admin-dashboard-main-page/module/admin-dashboard-main-page.module')
+    .then(m => m.AdminDashboardMainPageModule)},
     {path: 'add-update-product', 
     loadChildren: () => import('../add-update-product/add-update-product/module/add-update-product.module')
     .then(m => m.AddUpdateProductModule)},

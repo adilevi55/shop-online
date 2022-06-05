@@ -37,8 +37,6 @@ export class DialogUpdateProductComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-
-    console.log(this.data.payload);
     this.productsFormData = new FormData();
     this.product._id = this.data.payload._id;
     this.product.name = this.data.payload.name;

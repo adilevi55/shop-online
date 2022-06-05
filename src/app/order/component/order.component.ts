@@ -68,8 +68,13 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.orderAddOrderReq.shippingCity = this.user.city;
     this.orderAddOrderReq.purchaseDate = new Date();
     this.minShippingDate = new Date();
-    this.orderAddOrderReq.shppingDate = new Date();
     this.orderAddOrderReq.shippingCity = this.user.city;
+    console.log(new Date().getDay() === 5 || new Date().getDay() === 6);
+    if(new Date().getDay() === 5 || new Date().getDay() === 6){
+      this.orderAddOrderReq.shppingDate = null;
+    }else{
+      this.orderAddOrderReq.shppingDate = new Date();
+    }
   }
   UserOrder() {
     this.ordersService.userOrder(this.orderAddOrderReq);

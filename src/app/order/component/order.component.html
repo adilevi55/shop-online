@@ -17,9 +17,9 @@
     <mat-form-field 
     fxFlex="calc(60% - 5px)"
     appearance="outline">
-        <mat-label>Choose a Shpping Date</mat-label>
+        <mat-label>Choose a Shopping Date</mat-label>
         <input matInput [matDatepicker]="picker"
-        required  [min]="minShippingDate"
+        required  [min]="minShippingDate" 
         #shppingDateInfo="ngModel" [(ngModel)]="orderAddOrderReq.shppingDate" name="shppingDate" 
        placeholder="Shpping Date"  [matDatepickerFilter]="shippingDateFilter"
         >
@@ -27,22 +27,22 @@
         <mat-datepicker #picker></mat-datepicker>
 
         <mat-error *ngIf="shppingDateInfo.errors?.required && shppingDateInfo.touched">
-            Shpping Date Missing</mat-error>
+            Shopping Date Missing</mat-error>
       </mat-form-field>
   
       <mat-form-field fxFlex="calc(40% - 5px)"
       appearance="outline">
-    <mat-label>Shpping Street</mat-label>
+    <mat-label>Shopping Street</mat-label>
         <input matInput  required 
         #shppingStreetInfo="ngModel" [(ngModel)]="orderAddOrderReq.shppingStreet" name="shppingStreet" 
         type="text"  placeholder="Street" pattern="[a-z]{3,20}">
     
       <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
-        Shpping Street Missing</mat-error>
+        Shopping Street Missing</mat-error>
       <mat-error *ngIf="shppingStreetInfo.errors?.required && shppingStreetInfo.touched">
-        Shpping Street Missing</mat-error>
+        Shopping Street Missing</mat-error>
         <mat-error *ngIf="shppingStreetInfo.errors?.pattern && shppingStreetInfo.touched">
-          Shpping Street must be between 3 and 10 letters
+          Shopping Street must be between 3 and 10 letters
           and contain no numbers, spaces and symbols
         </mat-error>
       </mat-form-field>

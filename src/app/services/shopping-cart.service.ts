@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { ShoppingCart, ShoppingCartCreatReq } from '../interfaces/shopping-cart.interface';
 import { ShoppingCartItemsService } from './shopping-cart-items.service';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
-  BASE_URL = 'https://shop-online-server.herokuapp.com/api/shopping-cart/';
+  BASE_URL = environment.serverURL + 'shopping-cart/';
+
   OPEN_SHOPPING_CART = this.BASE_URL + 'open-shopping-cart/';
   ADD_SHOPPING_CART = this.BASE_URL + 'add';
   shoppingCart: ShoppingCart = {

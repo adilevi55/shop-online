@@ -1,7 +1,10 @@
-<p>add-update-prodcut-phone works!</p>
 <mat-icon mat-button
 (click)="userOpenProductNavBarPanelDialog()" 
 >menu</mat-icon>
+<mat-icon
+(click)="userOpenAddProductDialog()" 
+>add_box</mat-icon>
+
 <app-search-product></app-search-product>
 <app-product-template [products]="products$|async" 
 [adminAuth]="true"

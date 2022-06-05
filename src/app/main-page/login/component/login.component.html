@@ -7,7 +7,7 @@
     <h1>Login</h1>
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
-      <input matInput required #emailInfo="ngModel" email [(ngModel)]="user.email" name="email" type="text"
+      <input matInput required #emailInfo="ngModel" default="aaa" email [(ngModel)]="user.email" name="email" type="text"
         placeholder="Email">
 
       <mat-error *ngIf="emailInfo.errors?.required && emailInfo.touched">

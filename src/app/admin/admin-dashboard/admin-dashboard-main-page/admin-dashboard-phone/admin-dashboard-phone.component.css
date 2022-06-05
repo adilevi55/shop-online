@@ -1,0 +1,46 @@
+.section{
+
+}
+.card-div{
+	border-radius: 2rem;
+	text-align: center;
+	height: 35vh;
+	margin-bottom: 5px;
+}
+.card-div-icon{
+	height: 15vh;
+}
+.card-icon{
+	text-align: center;
+	padding:1rem;
+    border-radius: 50%;
+    background: #ffffff;
+}
+.card-div-top-order{
+	background-color: #3da5f4;
+}
+.icon-top-order{
+	color: #3da5f4;
+}
+
+.card-div-customer-number{
+	background-color: #00c689;
+}
+.icon-customer-number{
+	color: #00c689;
+}
+
+.card-div-orders-number{
+	background-color: #f1536e ;
+}
+.icon-orders-number{
+	color: #f1536e ;
+}
+
+.card-div-open-shopping-carts-number{
+	background-color: #fda006;
+}
+.icon-open-shopping-carts-number{
+	color: #fda006;
+}
+

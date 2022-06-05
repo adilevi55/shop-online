@@ -5,6 +5,7 @@ import { DialogMassageComponent } from '../dialog/dialog-massage/dialog-massage.
 import { DialogOrderSuccessComponent } from '../dialog/dialog-order-success/dialog-order-success.component';
 import { DialogProductNavBarComponent } from '../dialog/dialog-product-nav-bar/dialog-product-nav-bar.component';
 import { DialogUpdateProductComponent } from '../dialog/dialog-update-product/dialog-update-product.component';
+import { DialogAddProductComponent } from '../dialog/dialog-add-product/dialog-add-product.component';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class DialogService {
       orderMassageSuccess: DialogOrderSuccessComponent,
       productNavBar: DialogProductNavBarComponent,
       updateProduct: DialogUpdateProductComponent,
+      addProduct: DialogAddProductComponent,
     };
     return DIALOGS[dialogName];
   }

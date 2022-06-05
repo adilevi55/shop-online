@@ -1,0 +1,45 @@
+<section class="section"
+fxLayout="row wrap"
+    fxLayoutAlign="center center"
+    fxLayoutGap="5px"
+>
+	<div class="card-div card-div-top-order" fxLayout="column" fxLayoutAlign="center center" fxFlex="calc(50% - 5px)">
+		<div class="card-div-icon" fxLayoutAlign="center center">
+			<mat-icon class="card-icon icon-top-order"  >shopping_basket</mat-icon>
+		</div>
+		<div >
+			<h3>Top Order</h3>
+			<p>55</p>
+		</div>
+	</div>
+
+	<div class="card-div card-div-customer-number" fxLayout="column" fxLayoutAlign="center center" fxFlex="calc(50% - 5px)">
+		<div fxLayoutAlign="center center">
+			<mat-icon class="card-icon icon-customer-number" >supervisor_account</mat-icon>
+		</div>
+		<div>
+			<h3>Customer number</h3>
+			<p>number</p>
+		</div>
+	</div>
+
+	<div class="card-div  card-div-orders-number" fxLayout="column" fxLayoutAlign="center center" fxFlex="calc(50% - 5px)">
+		<div fxLayoutAlign="center center">
+			<mat-icon class="card-icon icon-orders-number" >shopping_basket</mat-icon>
+		</div>
+		<div>
+			<h3>Orders Number</h3>
+			<p>{{ orderNumber$ | async }}</p>
+		</div>
+	</div>
+
+	<div class="card-div  card-div-open-shopping-carts-number" fxLayout="column" fxLayoutAlign="center center" fxFlex="calc(50% - 5px)">
+		<div fxLayoutAlign="center center">
+			<mat-icon class="card-icon icon-open-shopping-carts-number" >shopping_cart</mat-icon>
+		</div>
+		<div>
+			<h3>Open Shopping Carts Number</h3>
+			<p>number</p>
+		</div>
+	</div>
+</section>

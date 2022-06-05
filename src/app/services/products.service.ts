@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../interfaces/product.interface';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-
-  BASE_URL = 'https://shop-online-server.herokuapp.com/api/product/';
+  
+  BASE_URL = environment.serverURL + 'product/';
   GET_ALL_PRODCUT_NUMBER = this.BASE_URL + 'all-products-number';
   GET_ALL_PRODCUTS = this.BASE_URL + 'all-products';
   GET_PRODCUTS_BY_CATEGORY = this.BASE_URL + 'category/';
@@ -15,7 +16,10 @@ export class ProductsService {
   allProductsListener: BehaviorSubject<Product[]> = new BehaviorSubject([]);
   productsList: Product[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    console.log(environment.serverURL)
+   }
+  
     getProductsNumber(): Observable<number> {
       return this.http.get<number>(this.GET_ALL_PRODCUT_NUMBER);
     }
@@ -40,5 +44,10 @@ export class ProductsService {
         this.productsList = products;
         this.allProductsListener.next(this.productsList);
       })
+    }
+
+    addProduct(procuctAdd: Product){
+      this.productsList.push(procuctAdd);
+      this.allProductsListener.next(this.productsList);
     }
 }

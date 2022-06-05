@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { ShoppingCartItem, CartItemAddToCartReq, CartItemUpadateReq } from '../interfaces/shopping-cart-item.interface';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartItemsService {
 
-  BASE_URL = 'https://shop-online-server.herokuapp.com/api/shopping-cart-item/';
+  BASE_URL = environment.serverURL + 'shopping-cart-item/';
   UPDATE_QUANTITY = this.BASE_URL + 'quantity/';
   ADD_CART_ITEM = this.BASE_URL + 'add';
   DELETE_ALL_CARTS_ITEMS = this.BASE_URL + 'all-items/';

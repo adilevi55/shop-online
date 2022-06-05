@@ -1,1 +1,28 @@
-<a routerLink="/admin/dashboard/add-update-product">add/update product</a>
+
+<mat-toolbar>
+ 
+    <mat-toolbar-row  class="mat-toolbar">
+		<mat-icon class="user-menu-icon" [matMenuTriggerFor]="menu">menu</mat-icon>
+
+
+		<mat-menu #menu="matMenu">
+		  <a mat-menu-item color="#67daff" 
+		  routerLink="/admin/dashboard" 
+		  >admin home</a>
+		  <a mat-menu-item color="#67daff" 
+		  routerLink="/admin/dashboard/add-update-product" 
+		  >add/update product</a>
+		  <a mat-menu-item color="#67daff" 
+		  routerLink="/admin/dashboard/add-update-product" 
+		  >orders</a>
+		
+		</mat-menu>
+
+        <span class="spacer"></span>
+  <button color="#67daff" (click)="logout()">
+    Logout
+</button>
+
+    </mat-toolbar-row>
+  
+  </mat-toolbar>

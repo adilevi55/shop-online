@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { Order, OrderAddOrderReq } from '../interfaces/order.interface';
 import { ShoppingCartService } from './shopping-cart.service';
 import { DialogService } from './dialog.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
- BASE_URL = 'https://shop-online-server.herokuapp.com/api/order/';
+ BASE_URL = environment.serverURL +'order/';
  ALL_ORDER_NUMBER = this.BASE_URL + 'all-order-number';
  USER_LAST_ORDER = this.BASE_URL + 'last-user-order/';
  USER_ORDER = this.BASE_URL + 'add';

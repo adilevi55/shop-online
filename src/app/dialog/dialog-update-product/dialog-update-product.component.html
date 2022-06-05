@@ -13,7 +13,7 @@
         <mat-label>Category</mat-label>
       <mat-select  
       type="text"  
-     [(ngModel)]="product.category" required
+     [(ngModel)]="product.category" 
      #categoryInfo="ngModel"  name="category"
      >
         <mat-option *ngFor="let c of categories" [value]="c._id">
@@ -30,16 +30,15 @@
 		type="number"  placeholder="Price" min="1">
 	  </mat-form-field>
 	  <div>
-        <img class="image"  *ngIf="!imgURL" src="{{product.img.url}}" width="100%">   
-        <img class="image" *ngIf="imgURL" [src]="imgURL" width="100%">  
+		<p>To Add a different image click the exist image</p>
+        <img (click)="imgInput.click()" class="image"  *ngIf="!imgURL" src="{{product.img.url}}" width="100%">   
+        <img (click)="imgInput.click()" class="image" *ngIf="imgURL" [src]="imgURL" width="100%">  
       </div>
 
 	<input  type="file" (change)="onFileSelected($event)"
 ngModel name="img" #imgInput style="display: none;">
-<button (click)="imgInput.click()"  mat-raised-button color="warn">
-  Update image
-</button>  
-<button (click)="updateProduct()">Update product</button>
+
+<button mat-raised-button (click)="updateProduct()">Update product</button>
 <mat-icon (click)="userExitDialog()" class="close-dialog-icon">close</mat-icon>
 
 </form>

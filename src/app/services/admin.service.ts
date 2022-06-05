@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ProductsService } from './products.service';
 import { Product } from '../interfaces/product.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  BASE_PRODUCT_URL = 'https://shop-online-server.herokuapp.com/api/product/';
-
+  BASE_PRODUCT_URL = environment.serverURL + 'product/';
+  ADD_PRODUCT_URL = this.BASE_PRODUCT_URL + 'add';
   constructor(
     private http: HttpClient,
     private productsService: ProductsService
@@ -19,6 +20,13 @@ export class AdminService {
      alert('Product Updated');
     this.updateProductsInProductService(productUpdated);
    })
+  }
+  addProductHttpReq(product: FormData){
+    this.http.post<Product>(this.ADD_PRODUCT_URL, product).subscribe(productAdded => {
+      this.productsService.addProduct(productAdded);
+      alert('Product Added');
+      
+    })
   }
   updateProductsInProductService(productUpdated){
     

@@ -1,0 +1,55 @@
+<form #formInfo="ngForm" fxLayout="row warp" fxLayoutAlign="center center"> 
+
+	<mat-form-field fxFlex="100%"
+	appearance="outline">
+  <mat-label>Name</mat-label>
+	  <input matInput  required
+	  #nameInfo="ngModel" [(ngModel)]="product.name" name="name" 
+	  type="text"  placeholder="Name" minlength="3" maxlength="20">
+
+      <mat-error *ngIf="nameInfo.errors?.required && nameInfo.touched">
+        Product Name Missing</mat-error>
+
+      <mat-error *ngIf="nameInfo.errors?.minlength && nameInfo.touched">
+        Product Name must be between 3 and 20 letters
+	</mat-error>
+	</mat-form-field>
+
+
+	<mat-form-field appearance="outline" fxFlex="100%">
+        <mat-label>Category</mat-label>
+      <mat-select  
+      type="text"  
+     [(ngModel)]="product.category" required
+     #categoryInfo="ngModel"  name="category"
+     >
+        <mat-option *ngFor="let c of categories" [value]="c._id">
+          {{c.name}}
+        </mat-option>
+	  </mat-select>
+	  <mat-error *ngIf="categoryInfo.errors?.required && categoryInfo.touched">
+        Product Category Missing</mat-error>
+	</mat-form-field>
+	  
+	  <mat-form-field fxFlex="100%"
+	  appearance="outline">
+	<mat-label>Price</mat-label>
+		<input matInput   required
+		#nameInfo="ngModel" [(ngModel)]="product.price" name="price" 
+		type="number"  placeholder="Price" min="1">
+		<mat-error *ngIf="categoryInfo.errors?.required && categoryInfo.touched">
+			Product Price Missing</mat-error>
+	  </mat-form-field>
+	  <div *ngIf="imgURL">
+		<p>To Add a different image click the uploaded image</p>
+		<img (click)="imgInput.click()" class="image"  [src]="imgURL" width="100%">  
+      </div>
+
+	<input  type="file" (change)="onFileSelected($event)" required
+ name="img" #imgInput style="display: none;">
+<mat-icon (click)="imgInput.click()" *ngIf="!imgURL" fxFlex="100%" class="add-image-icon">add_photo_alternate</mat-icon>
+  
+<button (click)="addProduct()" mat-raised-button [disabled]="formInfo.form.invalid" fxFlex="100%">Add product</button>
+<mat-icon (click)="userExitDialog()" class="close-dialog-icon">close</mat-icon>
+
+</form>

@@ -24,4 +24,8 @@ export class  AddUpdateProductPhoneComponent implements OnInit {
   userOpenProductNavBarPanelDialog() {
     this.dialogService.openDialog('productNavBar');
   }
+  userOpenAddProductDialog(){
+    this.dialogService.openDialog('addProduct');
+
+  }
 }
